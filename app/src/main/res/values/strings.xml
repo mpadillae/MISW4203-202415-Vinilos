@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Vinilos</string>
+    <string name="title_albums">Álbumes</string>
+    <string name="title_artists">Artistas</string>
+    <string name="title_collections">Coleccionistas</string>
+    <string name="title_welcome">Bienvenido</string>
+    <string name="button_collectors">COLECCIONISTA</string>
+    <string name="button_visitors">VISITANTE</string>
+    <string name="album_searchbar_hint">¿Qué quieres escuchar?</string>
+    <string name="album_label">Álbum</string>
+    <string name="album_genre_label">Género</string>
+    <string name="album_releasedate_label">Fecha de estreno</string>
+    <string name="album_record_label">Disquera</string>
+    <string name="album_artists_label">Artistas invitados</string>
+    <string name="no_tracks_message">No hay canciones para mostrar.</string>
+    <string name="no_comments_message">No hay comentarios para mostrar.</string>
+</resources>

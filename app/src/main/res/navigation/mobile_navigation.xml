@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_albums">
+
+    <fragment
+        android:id="@+id/navigation_albums"
+        android:name="com.mfpe.vinilos.ui.albums.AlbumListFragment"
+        android:label="@string/title_albums"
+        tools:layout="@layout/fragment_album_list" />
+
+    <fragment
+        android:id="@+id/navigation_artists"
+        android:name="com.mfpe.vinilos.ui.artists.ArtistListFragment"
+        android:label="@string/title_artists"
+        tools:layout="@layout/fragment_artist_list" />
+
+    <fragment
+        android:id="@+id/navigation_collections"
+        android:name="com.mfpe.vinilos.ui.collectors.CollectorListFragment"
+        android:label="@string/title_collections"
+        tools:layout="@layout/fragment_collector_list" />
+</navigation>
