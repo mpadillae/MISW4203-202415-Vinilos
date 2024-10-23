@@ -14,4 +14,5 @@
     <string name="album_artists_label">Artistas invitados</string>
     <string name="no_tracks_message">No hay canciones para mostrar.</string>
     <string name="no_comments_message">No hay comentarios para mostrar.</string>
+    <string name="no_albums_message">No hay álbumes para mostrar.</string>
 </resources>

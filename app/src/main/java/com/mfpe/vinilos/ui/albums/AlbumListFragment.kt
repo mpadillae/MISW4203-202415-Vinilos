@@ -41,6 +41,8 @@ class AlbumListFragment : Fragment() {
         vm.albums.observe(viewLifecycleOwner) { albums ->
             albums?.let {
                 albumAdapter.updateAlbums(it)
+                binding.emptyView.visibility = if (it.isNotEmpty()) View.GONE else View.VISIBLE
+                binding.recyclerAlbums.visibility = if (it.isNotEmpty()) View.VISIBLE else View.GONE
             }
         }
 

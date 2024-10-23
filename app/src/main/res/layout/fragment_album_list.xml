@@ -35,6 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/search_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -56,6 +57,17 @@
         android:focusable="true"
         app:shapeAppearanceOverlay="@style/RoundedFloatingButton"
         android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/empty_view"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:letterSpacing="0.02"
+        android:textSize="14sp"
+        android:text="@string/no_albums_message"
+        android:textColor="@color/gray"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
