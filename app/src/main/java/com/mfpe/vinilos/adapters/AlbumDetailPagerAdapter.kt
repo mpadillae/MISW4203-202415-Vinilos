@@ -3,7 +3,7 @@ package com.mfpe.vinilos.adapters
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.mfpe.vinilos.models.Album
+import com.mfpe.vinilos.data.model.Album
 import com.mfpe.vinilos.ui.albums.AlbumCommentsFragment
 import com.mfpe.vinilos.ui.albums.AlbumInfoFragment
 import com.mfpe.vinilos.ui.albums.AlbumTracksFragment

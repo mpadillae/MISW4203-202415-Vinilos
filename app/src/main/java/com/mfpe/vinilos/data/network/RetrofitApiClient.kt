@@ -1,4 +1,4 @@
-package com.mfpe.vinilos.network
+package com.mfpe.vinilos.data.network
 
 import com.mfpe.vinilos.utils.Constants
 import retrofit2.Retrofit

@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.mfpe.vinilos.databinding.FragmentAlbumInfoBinding
-import com.mfpe.vinilos.models.Album
+import com.mfpe.vinilos.data.model.Album
 import java.text.SimpleDateFormat
 import java.util.Locale
 

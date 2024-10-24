@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.mfpe.vinilos.databinding.FragmentCollectorListBinding
-import com.mfpe.vinilos.viewmodels.CollectorViewModel
+import com.mfpe.vinilos.viewmodel.CollectorViewModel
 
 class CollectorListFragment : Fragment() {
 

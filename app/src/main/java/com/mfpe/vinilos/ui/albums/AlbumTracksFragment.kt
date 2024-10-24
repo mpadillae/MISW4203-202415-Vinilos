@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mfpe.vinilos.adapters.TrackAdapter
 import com.mfpe.vinilos.databinding.FragmentAlbumTracksBinding
-import com.mfpe.vinilos.models.Album
+import com.mfpe.vinilos.data.model.Album
 import com.mfpe.vinilos.utils.PrefsManager
 
 class AlbumTracksFragment(private val album: Album) : Fragment() {

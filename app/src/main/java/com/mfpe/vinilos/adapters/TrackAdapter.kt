@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mfpe.vinilos.databinding.TrackItemBinding
-import com.mfpe.vinilos.models.Track
+import com.mfpe.vinilos.data.model.Track
 
 class TrackAdapter(private val albumCover: String, private var tracks: List<Track>) : RecyclerView.Adapter<TrackAdapter.ViewHolder>()  {
 

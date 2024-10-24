@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.mfpe.vinilos.databinding.FragmentArtistListBinding
-import com.mfpe.vinilos.viewmodels.ArtistViewModel
+import com.mfpe.vinilos.viewmodel.ArtistViewModel
 
 class ArtistListFragment : Fragment() {
 

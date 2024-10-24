@@ -16,7 +16,7 @@ import com.mfpe.vinilos.R
 import com.mfpe.vinilos.adapters.AlbumAdapter
 import com.mfpe.vinilos.databinding.FragmentAlbumListBinding
 import com.mfpe.vinilos.utils.PrefsManager
-import com.mfpe.vinilos.viewmodels.AlbumListViewModel
+import com.mfpe.vinilos.viewmodel.AlbumListViewModel
 
 
 class AlbumListFragment : Fragment() {

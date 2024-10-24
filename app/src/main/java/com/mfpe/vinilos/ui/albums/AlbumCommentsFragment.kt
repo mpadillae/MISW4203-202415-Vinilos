@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mfpe.vinilos.adapters.CommentAdapter
 import com.mfpe.vinilos.databinding.FragmentAlbumCommentsBinding
-import com.mfpe.vinilos.models.Album
+import com.mfpe.vinilos.data.model.Album
 
 class AlbumCommentsFragment(private val album: Album) : Fragment() {
 

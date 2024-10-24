@@ -1,6 +1,6 @@
-package com.mfpe.vinilos.network
+package com.mfpe.vinilos.data.network
 
-import com.mfpe.vinilos.models.Album
+import com.mfpe.vinilos.data.model.Album
 import retrofit2.Call
 import retrofit2.http.GET
 

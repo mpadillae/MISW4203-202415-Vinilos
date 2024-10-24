@@ -7,7 +7,7 @@ import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.mfpe.vinilos.models.Album
+import com.mfpe.vinilos.data.model.Album
 import com.mfpe.vinilos.databinding.AlbumItemBinding
 import com.mfpe.vinilos.ui.albums.AlbumDetailActivity
 

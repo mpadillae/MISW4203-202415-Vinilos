@@ -6,7 +6,7 @@ import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
 import com.mfpe.vinilos.adapters.AlbumDetailPagerAdapter
 import com.mfpe.vinilos.databinding.ActivityAlbumDetailBinding
-import com.mfpe.vinilos.models.Album
+import com.mfpe.vinilos.data.model.Album
 
 class AlbumDetailActivity : AppCompatActivity() {
 

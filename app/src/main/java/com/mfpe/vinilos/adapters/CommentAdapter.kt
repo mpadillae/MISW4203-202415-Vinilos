@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mfpe.vinilos.databinding.CommentItemBinding
-import com.mfpe.vinilos.models.Comment
+import com.mfpe.vinilos.data.model.Comment
 
 class CommentAdapter(private var comments: List<Comment>) : RecyclerView.Adapter<CommentAdapter.ViewHolder>()  {
 
