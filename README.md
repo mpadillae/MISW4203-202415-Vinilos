@@ -1,6 +1,6 @@
 # Vinilos App
 
-Este proyecto es una aplicación Android desarrollada utilizando Kotlin. Utiliza Retrofit para operaciones de red y sigue el patrón de arquitectura MVVM. Este proyecto a sido desarrollado como parte del curso MISW4203 - Ingeniería de software para aplicaciones móviles de la Universidad de los Andes.
+Este proyecto es una aplicación Android desarrollada utilizando Kotlin. Utiliza Retrofit para operaciones de red y sigue el patrón de arquitectura MVVM. Este proyecto ha sido desarrollado como parte del curso MISW4203 - Ingeniería de software para aplicaciones móviles de la Universidad de los Andes.
 
 ## Integrantes
 
@@ -13,11 +13,11 @@ Este proyecto es una aplicación Android desarrollada utilizando Kotlin. Utiliza
 
 ## Requisitos previos
 Para levantar este proyecto necesitarás:
-- Android Studio Ladybug | 2024.2.1
-- SDK de Android
+- Android Studio Ladybug | 2024.2.1 o superior.
+- SDK de Android.
 - Variable de entorno `ANDROID_HOME` apuntando al SDK.
-- JDK 11 o superior
-- Gradle 7.0 o superior
+- JDK 11 o superior.
+- Gradle 7.0 o superior.
 
 ## Estructura del proyecto
 
@@ -76,6 +76,10 @@ Para levantar este proyecto necesitarás:
 ![image](https://i.ibb.co/Nm3vkV1/Captura-de-pantalla-2024-10-24-a-la-s-10-49-52.png)
 También se pueden ejecutar las pruebas directamente haciendo clic derecho sobre el paquete y seleccionando la opción `Run 'Tests in vinilos.app.UnitTest'`.
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/cea232e8-c242-4479-b609-41858addba80" alt="Picture" width="564" height="507"  />
+</p>
+
 ### Pruebas con Espresso
 1. Conecta un dispositivo Android vía USB o inicia un emulador de Android.
 2. Ve a `Run > Edit Configurations`.
@@ -87,6 +91,11 @@ También se pueden ejecutar las pruebas directamente haciendo clic derecho sobre
 
 ![image](https://i.ibb.co/8gG3bNP/Captura-de-pantalla-2024-10-24-a-la-s-10-57-44.png)
 También se pueden ejecutar las pruebas directamente haciendo clic derecho sobre el paquete y seleccionando la opción `Run 'All tests'`.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/046b443e-ca2d-47a4-b113-fdb91bbb8252" alt="Picture" width="529"   />
+</p>
+
 
 ## Dependencias
 El proyecto utiliza las siguientes dependencias:
