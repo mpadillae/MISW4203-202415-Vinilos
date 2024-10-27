@@ -1,0 +1,124 @@
+<!-- res/layout/activity_album_detail.xml -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background"
+    tools:context=".ui.albums.AlbumDetailActivity">
+
+    <ImageView
+        android:id="@+id/back_button"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_arrow_left" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:id="@+id/album_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.3"
+        app:shapeAppearanceOverlay="@style/RoundedSquare"/>
+
+    <TextView
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/album_name"
+        app:layout_constraintTop_toBottomOf="@+id/album_image_view"
+        app:layout_constraintStart_toStartOf="@+id/back_button"
+        style="@style/Base.TextAppearance.AppCompat.Medium"
+        android:textSize="22sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+
+        android:textFontWeight="800"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white" />
+
+    <LinearLayout
+        android:id="@+id/artist_layout"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/album_name"
+        app:layout_constraintStart_toStartOf="@+id/album_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_height="30dp"
+            android:layout_width="30dp"
+            android:id="@+id/artist_image_view"
+            android:src="@drawable/ic_avatar" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:orientation="vertical">
+
+            <TextView
+
+                android:id="@+id/artist_name"
+                style="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textSize="12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textFontWeight="600"
+                android:letterSpacing="0.02"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:layout_marginTop="4dp"
+                android:id="@+id/album_label"
+                android:textSize="10sp"
+                android:text="@string/album_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textColor="@color/gray" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:layout_marginTop="20dp"
+        android:background="@color/dark_gray"
+        app:tabIndicatorFullWidth="false"
+        app:tabIndicatorColor="@color/green"
+        app:tabSelectedTextColor="@color/green"
+        app:tabTextColor="@color/gray"
+        android:id="@+id/tabLayout"
+        app:tabTextAppearance="@style/CustomTextAppearance"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/artist_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
