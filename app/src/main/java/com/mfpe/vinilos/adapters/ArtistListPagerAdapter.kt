@@ -2,10 +2,6 @@ package com.mfpe.vinilos.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.mfpe.vinilos.ui.albums.AlbumCommentsFragment
-import com.mfpe.vinilos.ui.albums.AlbumDetailActivity
-import com.mfpe.vinilos.ui.albums.AlbumInfoFragment
-import com.mfpe.vinilos.ui.albums.AlbumTracksFragment
 import com.mfpe.vinilos.ui.artists.ArtistListFragment
 import com.mfpe.vinilos.ui.artists.BandListFragment
 import com.mfpe.vinilos.ui.artists.MusicianListFragment

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="10dp"
@@ -57,7 +56,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/artist_heart"
         app:layout_constraintEnd_toEndOf="@+id/artist_card"
         app:layout_constraintStart_toEndOf="@+id/artist_heart"
-        app:layout_constraintTop_toTopOf="@+id/artist_heart"
-        tools:targetApi="p" />
+        app:layout_constraintTop_toTopOf="@+id/artist_heart" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

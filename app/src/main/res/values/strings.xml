@@ -16,5 +16,9 @@
     <string name="no_comments_message">No hay comentarios para mostrar.</string>
     <string name="no_albums_message">No hay álbumes para mostrar.</string>
     <string name="no_bands_message">No hay bandas para mostrar.</string>
+    <string name="no_musicians_message">No hay Músicos para mostrar.</string>
+    <string name="image_artist">Imagen del artista.</string>
+    <string name="image_heart">Imagen corazón.</string>
+
 
 </resources>
