@@ -7,15 +7,17 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.tabs.TabLayoutMediator
+import com.mfpe.vinilos.adapters.AlbumDetailPagerAdapter
+import com.mfpe.vinilos.adapters.ArtistListPagerAdapter
+import com.mfpe.vinilos.data.model.Album
 import com.mfpe.vinilos.databinding.FragmentArtistListBinding
-import com.mfpe.vinilos.viewmodel.ArtistViewModel
+import com.mfpe.vinilos.viewmodel.ArtistListViewModel
 
 class ArtistListFragment : Fragment() {
 
     private var _binding: FragmentArtistListBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -24,12 +26,25 @@ class ArtistListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val artistViewModel =
-            ViewModelProvider(this).get(ArtistViewModel::class.java)
+            ViewModelProvider(this)[ArtistListViewModel::class.java]
 
         _binding = FragmentArtistListBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+
+        val adapter = ArtistListPagerAdapter(this)
+        binding.viewPager.adapter = adapter
+
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+            tab.text = when (position) {
+                0 -> "Musicos"
+                1 -> "Bandas"
+                else -> null
+            }
+        }.attach()
+
         val textView: TextView = binding.textDashboard
+
         artistViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
