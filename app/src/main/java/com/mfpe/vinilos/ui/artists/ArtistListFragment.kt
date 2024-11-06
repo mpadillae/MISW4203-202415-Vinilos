@@ -31,7 +31,6 @@ class ArtistListFragment : Fragment() {
         _binding = FragmentArtistListBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-
         val adapter = ArtistListPagerAdapter(this)
         binding.viewPager.adapter = adapter
 
@@ -43,11 +42,7 @@ class ArtistListFragment : Fragment() {
             }
         }.attach()
 
-        val textView: TextView = binding.textDashboard
 
-        artistViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return root
     }
 
