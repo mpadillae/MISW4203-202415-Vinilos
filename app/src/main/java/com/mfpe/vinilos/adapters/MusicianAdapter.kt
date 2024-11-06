@@ -20,7 +20,18 @@ class MusicianAdapter(private var musicians: List<Musician>): RecyclerView.Adapt
     override fun getItemCount(): Int = musicians.size
 
     override fun getFilter(): Filter {
-        TODO("Not yet implemented")
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                // No filtering, return the original list as is
+                return FilterResults().apply {
+                    values = musicians
+                }
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                // Do nothing, since no filtering is applied
+            }
+        }
     }
 
     override fun onBindViewHolder(holder: MusicianAdapter.ViewHolder, position: Int) {
