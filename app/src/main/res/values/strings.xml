@@ -15,4 +15,6 @@
     <string name="no_tracks_message">No hay canciones para mostrar.</string>
     <string name="no_comments_message">No hay comentarios para mostrar.</string>
     <string name="no_albums_message">No hay álbumes para mostrar.</string>
+    <string name="no_collectors_message">No hay coleccionistas para mostrar.</string>
+    <string name="collector_searchbar_hint">¿A quién quieres buscar?</string>
 </resources>
