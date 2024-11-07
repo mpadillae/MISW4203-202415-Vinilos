@@ -23,7 +23,9 @@ class CollectorAdapter(private var collectors: List<Collector>) : RecyclerView.A
             with(filteredCollectorList[position]) {
                 binding.collectorName.text = this.name
                 binding.collectorEmail.text = this.email
-                binding.collectorInitials.text = "${this.name.first()}${this.name.last()}"
+                val names = this.name.split(" ")
+                val initials = names[0].first().uppercase() + names[names.lastIndex].first().uppercase()
+                binding.collectorInitials.text = initials
             }
         }
     }
