@@ -80,7 +80,7 @@ class AlbumListFragment : Fragment() {
         binding.recyclerAlbums.layoutManager = GridLayoutManager(context, 2)
         binding.recyclerAlbums.adapter = albumAdapter
         val spacingInPixels = resources.getDimensionPixelSize(R.dimen.activity_custom_margin)
-        val itemDecoration = GridSpacingItemDecoration(2, spacingInPixels)
+        val itemDecoration = GridSpacingItemDecoration(spacingInPixels)
         binding.recyclerAlbums.addItemDecoration(itemDecoration)
     }
 
