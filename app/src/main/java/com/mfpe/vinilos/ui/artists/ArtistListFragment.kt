@@ -24,7 +24,7 @@ class ArtistListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val artistViewModel =
-            ViewModelProvider(this).get(ArtistViewModel::class.java)
+            ViewModelProvider(this)[ArtistViewModel::class.java]
 
         _binding = FragmentArtistListBinding.inflate(inflater, container, false)
         val root: View = binding.root

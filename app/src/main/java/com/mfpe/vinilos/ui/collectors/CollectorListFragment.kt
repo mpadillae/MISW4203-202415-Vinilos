@@ -1,6 +1,5 @@
 package com.mfpe.vinilos.ui.collectors
 
-import GridSpacingItemDecoration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,19 +7,12 @@ import android.view.ViewGroup
 import android.widget.AutoCompleteTextView
 import android.widget.LinearLayout
 import android.widget.SearchView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.mfpe.vinilos.R
-import com.mfpe.vinilos.adapters.AlbumAdapter
 import com.mfpe.vinilos.adapters.CollectorAdapter
-import com.mfpe.vinilos.databinding.FragmentAlbumListBinding
 import com.mfpe.vinilos.databinding.FragmentCollectorListBinding
-import com.mfpe.vinilos.utils.PrefsManager
 import com.mfpe.vinilos.viewmodel.CollectorListViewModel
 
 class CollectorListFragment : Fragment() {
@@ -77,12 +69,6 @@ class CollectorListFragment : Fragment() {
         collectorAdapter = CollectorAdapter(emptyList())
         binding.recyclerCollectors.layoutManager = LinearLayoutManager(context)
         binding.recyclerCollectors.adapter = collectorAdapter
-        //val spacingInPixels = resources.getDimensionPixelSize(R.dimen.activity_custom_margin)
-        //val itemDecoration = GridSpacingItemDecoration(1, spacingInPixels)
-        //binding.recyclerCollectors.addItemDecoration(itemDecoration)
-        binding.recyclerCollectors.addItemDecoration(
-            DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-        )
     }
 
     private fun setupSearchView() {

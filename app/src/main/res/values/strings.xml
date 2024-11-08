@@ -17,4 +17,19 @@
     <string name="no_albums_message">No hay álbumes para mostrar.</string>
     <string name="no_collectors_message">No hay coleccionistas para mostrar.</string>
     <string name="collector_searchbar_hint">¿A quién quieres buscar?</string>
+    <string name="tabInformation">Información</string>
+    <string name="tabSongs">Canciones</string>
+    <string name="tabComments">Comentarios</string>
+    <string name="welcomeText">Bienvenido</string>
+    <string name="ivExit">Salir al menú principal</string>
+    <string name="ivProfile">Avatar</string>
+    <string name="ivArrowLeft">Devolverse</string>
+    <string name="ivAccount">Cuenta</string>
+    <string name="ivMainBackground">Artista cantando</string>
+    <string name="ivGradient">Gradiente</string>
+    <string name="ivAlbumItem">Imágen de álbum</string>
+    <string name="ivHeart">Corazón</string>
+    <string name="fabAddAlbum">Agregar álbum</string>
+    <string name="fabAddTrack">Agregar canción</string>
+    <string name="ivTrackItem">Imágen de canción</string>
 </resources>

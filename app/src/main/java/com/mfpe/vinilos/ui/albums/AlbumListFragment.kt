@@ -1,6 +1,6 @@
 package com.mfpe.vinilos.ui.albums
 
-import GridSpacingItemDecoration
+import com.mfpe.vinilos.utils.GridSpacingItemDecoration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
