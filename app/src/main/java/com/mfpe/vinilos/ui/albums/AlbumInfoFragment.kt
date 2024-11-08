@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.mfpe.vinilos.R
 import com.mfpe.vinilos.databinding.FragmentAlbumInfoBinding
 import com.mfpe.vinilos.data.model.Album
 import java.text.SimpleDateFormat
@@ -23,9 +24,11 @@ class AlbumInfoFragment(private val album: Album) : Fragment() {
         val root: View = binding.root
 
         binding.albumInfoGenre.text = album.genre
-        binding.albumInfoReleasedate.text = SimpleDateFormat("dd/MM/yyyy", Locale.US).format(album.releaseDate)
+        binding.albumInfoReleasedate.text =
+            SimpleDateFormat("dd/MM/yyyy", Locale.US).format(album.releaseDate)
         binding.albumInfoRecord.text = album.recordLabel
-        binding.albumInfoArtist.text = "  •  ${album.performers[0].name}"
+        binding.albumInfoArtist.text =
+            resources.getString(R.string.tvAlbumInfoArtist).format(album.performers[0].name)
 
         return root
     }

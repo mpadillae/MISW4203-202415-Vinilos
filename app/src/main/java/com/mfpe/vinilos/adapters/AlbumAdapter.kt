@@ -61,7 +61,7 @@ class AlbumAdapter(private var albums: List<Album>) : RecyclerView.Adapter<Album
 
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
                 filteredAlbumList = results?.values as List<Album>
-                notifyDataSetChanged()
+                notifyItemRangeChanged(0, filteredAlbumList.size)
             }
         }
     }
@@ -69,7 +69,7 @@ class AlbumAdapter(private var albums: List<Album>) : RecyclerView.Adapter<Album
     fun updateAlbums(newAlbums: List<Album>) {
         albums = newAlbums
         this.filteredAlbumList = albums
-        notifyDataSetChanged()
+        notifyItemRangeChanged(0, filteredAlbumList.size)
     }
 
 }

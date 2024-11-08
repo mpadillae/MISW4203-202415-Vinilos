@@ -24,7 +24,7 @@ class CollectorListViewModel : ViewModel() {
         collectorRepository.getCollectors().enqueue(object : Callback<List<Collector>> {
             override fun onResponse(call: Call<List<Collector>>, res: Response<List<Collector>>) {
                 if (res.isSuccessful) {
-                    _collectors.value = res.body()
+                    _collectors.value = res.body()?.sortedBy { it.name }
                     _networkError.value = false
                 }
             }

@@ -62,7 +62,7 @@ class CollectorListFragment : Fragment() {
     }
 
     private fun onNetworkError() {
-        Toast.makeText(activity, "Error when retrieving albums.", Toast.LENGTH_LONG).show()
+        Toast.makeText(activity, "Error when retrieving collectors.", Toast.LENGTH_LONG).show()
     }
 
     private fun setupRecyclerView() {

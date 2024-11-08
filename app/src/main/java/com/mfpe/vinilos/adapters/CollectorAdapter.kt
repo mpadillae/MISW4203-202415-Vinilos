@@ -51,7 +51,7 @@ class CollectorAdapter(private var collectors: List<Collector>) : RecyclerView.A
 
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
                 filteredCollectorList = results?.values as List<Collector>
-                notifyDataSetChanged()
+                notifyItemRangeChanged(0, filteredCollectorList.size)
             }
         }
     }
@@ -59,6 +59,6 @@ class CollectorAdapter(private var collectors: List<Collector>) : RecyclerView.A
     fun updateCollectors(newCollectors: List<Collector>) {
         collectors = newCollectors
         this.filteredCollectorList = collectors
-        notifyDataSetChanged()
+        notifyItemRangeChanged(0, filteredCollectorList.size)
     }
 }

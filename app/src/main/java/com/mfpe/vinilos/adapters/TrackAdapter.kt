@@ -19,7 +19,7 @@ class TrackAdapter(private val albumCover: String, private var tracks: List<Trac
     override fun onBindViewHolder(holder: TrackAdapter.ViewHolder, position: Int) {
         with(holder) {
             with(tracks[position]) {
-                binding.trackId.text = (position + 1).toString()
+                binding.trackId.text = "%d".format(position + 1)
                 binding.trackName.text = this.name
                 Glide.with(binding.trackImage.context)
                     .load(albumCover)

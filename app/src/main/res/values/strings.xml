@@ -32,4 +32,6 @@
     <string name="fabAddAlbum">Agregar álbum</string>
     <string name="fabAddTrack">Agregar canción</string>
     <string name="ivTrackItem">Imágen de canción</string>
+    <string name="tvAlbumInfoArtist">  •  %s</string>
+    <string name="tvNumberFormat">%d</string>
 </resources>
