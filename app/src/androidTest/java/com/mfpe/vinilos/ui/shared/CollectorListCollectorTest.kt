@@ -27,14 +27,14 @@ import java.lang.Thread.sleep
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class AlbumDetailTest {
+class CollectorListCollectorTest {
 
     @Rule
     @JvmField
     var mActivityScenarioRule = ActivityScenarioRule(UserSelectActivity::class.java)
 
     @Test
-    fun albumDetailTest() {
+    fun collectorListCollectorTest() {
         val button = onView(
             allOf(
                 withId(R.id.button_collectors), withText("COLECCIONISTA"),
@@ -53,69 +53,12 @@ class AlbumDetailTest {
         )
         button.perform(click())
 
-        val cardView = onView(
+        val bottomNavigationItemView = onView(
             allOf(
-                withId(R.id.album_card),
+                withId(R.id.navigation_collections), withContentDescription("Coleccionistas"),
                 childAtPosition(
                     childAtPosition(
-                        withId(R.id.recycler_albums),
-                        0
-                    ),
-                    0
-                ),
-                isDisplayed()
-            )
-        )
-        sleep(5000)
-        cardView.perform(click())
-
-        val imageView = onView(
-            allOf(
-                withId(R.id.album_image_view),
-                withParent(withParent(withId(android.R.id.content))),
-                isDisplayed()
-            )
-        )
-        sleep(5000)
-        imageView.check(matches(isDisplayed()))
-
-        val imageView2 = onView(
-            allOf(
-                withId(R.id.artist_image_view),
-                withParent(
-                    allOf(
-                        withId(R.id.artist_layout),
-                        withParent(IsInstanceOf.instanceOf(android.view.ViewGroup::class.java))
-                    )
-                ),
-                isDisplayed()
-            )
-        )
-        sleep(5000)
-        imageView2.check(matches(isDisplayed()))
-
-        val tabView = onView(
-            allOf(
-                withContentDescription("Canciones"),
-                childAtPosition(
-                    childAtPosition(
-                        withId(R.id.tabLayout),
-                        0
-                    ),
-                    1
-                ),
-                isDisplayed()
-            )
-        )
-        sleep(5000)
-        tabView.perform(click())
-
-        val tabView2 = onView(
-            allOf(
-                withContentDescription("Comentarios"),
-                childAtPosition(
-                    childAtPosition(
-                        withId(R.id.tabLayout),
+                        withId(R.id.nav_view),
                         0
                     ),
                     2
@@ -123,42 +66,21 @@ class AlbumDetailTest {
                 isDisplayed()
             )
         )
-        sleep(5000)
-        tabView2.perform(click())
+        bottomNavigationItemView.perform(click())
 
-        val tabView3 = onView(
+        val linearLayout = onView(
             allOf(
-                withContentDescription("Información"),
-                childAtPosition(
-                    childAtPosition(
-                        withId(R.id.tabLayout),
-                        0
-                    ),
+                withIndex(
+                    withParent(withParent(IsInstanceOf.instanceOf(android.widget.LinearLayout::class.java))),
                     0
                 ),
                 isDisplayed()
             )
         )
         sleep(5000)
-        tabView3.perform(click())
+        linearLayout.check(matches(isDisplayed()))
 
         val appCompatImageView = onView(
-            allOf(
-                withId(R.id.back_button), withContentDescription("Devolverse"),
-                childAtPosition(
-                    childAtPosition(
-                        withId(android.R.id.content),
-                        0
-                    ),
-                    0
-                ),
-                isDisplayed()
-            )
-        )
-        sleep(5000)
-        appCompatImageView.perform(click())
-
-        val appCompatImageView2 = onView(
             allOf(
                 withId(R.id.exitButton), withContentDescription("Salir al menú principal"),
                 childAtPosition(
@@ -174,8 +96,7 @@ class AlbumDetailTest {
                 isDisplayed()
             )
         )
-        sleep(5000)
-        appCompatImageView2.perform(click())
+        appCompatImageView.perform(click())
     }
 
     private fun childAtPosition(
@@ -192,6 +113,22 @@ class AlbumDetailTest {
                 val parent = view.parent
                 return parent is ViewGroup && parentMatcher.matches(parent)
                         && view == parent.getChildAt(position)
+            }
+        }
+    }
+
+    private fun withIndex(
+        parentMatcher: Matcher<View>, index: Int
+    ): Matcher<View> {
+        var currentIndex = 0
+        return object : TypeSafeMatcher<View>() {
+            override fun describeTo(description: Description) {
+                description.appendText("with index $index ")
+                parentMatcher.describeTo(description)
+            }
+
+            public override fun matchesSafely(view: View): Boolean {
+                return parentMatcher.matches(view) && currentIndex++ == index
             }
         }
     }

@@ -7,6 +7,7 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.withContentDescription
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withParent
 import androidx.test.espresso.matcher.ViewMatchers.withText
@@ -65,7 +66,7 @@ class AlbumListCollectorTest {
                 isDisplayed()
             )
         )
-        sleep(3000)
+        sleep(5000)
         imageView.check(matches(isDisplayed()))
 
         val imageView2 = onView(
@@ -76,8 +77,26 @@ class AlbumListCollectorTest {
             )
         )
 
-        sleep(3000)
+        sleep(5000)
         imageView2.check(matches(isDisplayed()))
+
+        val appCompatImageView = onView(
+            allOf(
+                withId(R.id.exitButton), withContentDescription("Salir al menú principal"),
+                childAtPosition(
+                    allOf(
+                        withId(R.id.toolbar),
+                        childAtPosition(
+                            withId(R.id.container),
+                            0
+                        )
+                    ),
+                    2
+                ),
+                isDisplayed()
+            )
+        )
+        appCompatImageView.perform(click())
     }
 
     private fun childAtPosition(
