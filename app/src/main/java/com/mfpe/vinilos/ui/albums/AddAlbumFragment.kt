@@ -2,8 +2,6 @@ package com.mfpe.vinilos.ui.albums
 
 import android.os.Bundle
 import android.widget.*
-import androidx.appcompat.app.AppCompatActivity
-import com.mfpe.vinilos.R
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.mfpe.vinilos.viewmodel.AlbumListViewModel
@@ -12,8 +10,14 @@ import com.mfpe.vinilos.data.model.Album
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import androidx.fragment.app.Fragment
+import com.mfpe.vinilos.databinding.FragmentAddAlbumBinding
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 
-class AddAlbumActivity : AppCompatActivity() {
+class AddAlbumFragment : Fragment() {
 
     private lateinit var etName: EditText
     private lateinit var etUrlCover: EditText
@@ -23,27 +27,31 @@ class AddAlbumActivity : AppCompatActivity() {
     private lateinit var etDescription: EditText
     private lateinit var btnAddAlbum: Button
     private lateinit var albumListViewModel: AlbumListViewModel
+    private var _binding: FragmentAddAlbumBinding? = null
+    private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_add_album)
-
-        val backButton = findViewById<ImageButton>(R.id.back_button)
-        backButton.setOnClickListener {
-            finish()
-        }
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentAddAlbumBinding.inflate(inflater, container, false)
+        val view = binding.root
 
         albumListViewModel = ViewModelProvider(this)[AlbumListViewModel::class.java]
 
-        etName = findViewById(R.id.et_name)
-        etUrlCover = findViewById(R.id.et_url_cover)
-        spGenre = findViewById(R.id.sp_genre)
-        etReleaseDate = findViewById(R.id.et_release_date)
-        spRecordLabel = findViewById(R.id.sp_record_label)
-        etDescription = findViewById(R.id.et_description)
-        btnAddAlbum = findViewById(R.id.btn_add_album)
+        etName = binding.etName
+        etUrlCover = binding.etUrlCover
+        spGenre = binding.spGenre
+        etReleaseDate = binding.etReleaseDate
+        spRecordLabel = binding.spRecordLabel
+        etDescription = binding.etDescription
+        btnAddAlbum = binding.btnAddAlbum
 
         setupSpinners()
+
+        binding.backButton.setOnClickListener {
+            findNavController().popBackStack() // Navegar hacia atrás
+        }
 
         btnAddAlbum.setOnClickListener {
             if (validateFields()) {
@@ -69,29 +77,35 @@ class AddAlbumActivity : AppCompatActivity() {
 
                     albumListViewModel.addAlbum(album) { success ->
                         if (success) {
-                            Toast.makeText(this, "Álbum agregado exitosamente", Toast.LENGTH_LONG).show()
-                            finish()
+                            Toast.makeText(requireContext(), "Álbum agregado exitosamente", Toast.LENGTH_LONG).show()
+                            findNavController().popBackStack()
                         } else {
-                            Toast.makeText(this, "Error al agregar el álbum", Toast.LENGTH_LONG).show()
+                            Toast.makeText(requireContext(), "Error al agregar el álbum", Toast.LENGTH_LONG).show()
                         }
                     }
                 } else {
-                    Toast.makeText(this, "Fecha inválida", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Fecha inválida", Toast.LENGTH_SHORT).show()
                 }
             }
         }
+        return view
+
     }
 
+
+
     private fun isValidUrlCover(url: String): Boolean {
-        val regex = "^https://cdns-images\\.dzcdn\\.net/images/cover/[a-f0-9]{32}/[0-9x]+-[0-9]{6}-80-0-0\\.jpg$".toRegex()
+        val regex = "^https://.*\\.(jpg|jpeg|png|gif|bmp|webp)$".toRegex()
         return url.matches(regex)
     }
+
+
 
     private fun setupSpinners() {
         val genres = listOf("Classical", "Salsa", "Rock", "Folk")
         val recordLabels = listOf("Sony Music", "EMI", "Discos Fuentes", "Elektra", "Fania Records")
 
-        val genreAdapter = object : ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, genres) {
+        val genreAdapter = object : ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_item, genres) {
             override fun getView(position: Int, convertView: android.view.View?, parent: android.view.ViewGroup): android.view.View {
                 val view = super.getView(position, convertView, parent)
                 (view as TextView).apply {
@@ -110,7 +124,7 @@ class AddAlbumActivity : AppCompatActivity() {
         spGenre.adapter = genreAdapter
         spGenre.setSelection(-1)
 
-        val recordLabelAdapter = object : ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, recordLabels) {
+        val recordLabelAdapter = object : ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_item, recordLabels) {
             override fun getView(position: Int, convertView: android.view.View?, parent: android.view.ViewGroup): android.view.View {
                 val view = super.getView(position, convertView, parent)
                 (view as TextView).apply {
@@ -145,7 +159,7 @@ class AddAlbumActivity : AppCompatActivity() {
 
 
         if (spGenre.selectedItem == "Género") {
-            Toast.makeText(this, "Por favor, selecciona un género", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Por favor, selecciona un género", Toast.LENGTH_SHORT).show() // Corrección
             isValid = false
         }
         if (etDescription.text.isEmpty()) {
@@ -164,5 +178,6 @@ class AddAlbumActivity : AppCompatActivity() {
 
         return isValid
     }
+
 
 }

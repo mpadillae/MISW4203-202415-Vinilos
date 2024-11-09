@@ -43,7 +43,7 @@
         app:layout_constraintTop_toBottomOf="@id/title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="45dp" />
+        android:layout_marginTop="35dp" />
 
     <EditText
         android:id="@+id/et_url_cover"
@@ -57,7 +57,7 @@
         app:layout_constraintTop_toBottomOf="@id/et_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="45dp" />
+        android:layout_marginTop="35dp" />
 
     <Spinner
         android:id="@+id/sp_genre"
@@ -68,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@id/et_url_cover"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="35dp"
         android:background="@drawable/spinner_background" />
 
     <EditText
@@ -84,7 +84,7 @@
         app:layout_constraintTop_toBottomOf="@id/sp_genre"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="45dp" />
+        android:layout_marginTop="35dp" />
 
     <Spinner
         android:id="@+id/sp_record_label"
@@ -95,7 +95,7 @@
         app:layout_constraintTop_toBottomOf="@id/et_release_date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="35dp"
         android:background="@drawable/spinner_background" />
 
     <EditText
@@ -111,7 +111,7 @@
         app:layout_constraintTop_toBottomOf="@id/sp_record_label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="35dp"
         android:importantForAutofill="no" />
 
 
@@ -129,19 +129,6 @@
         android:layout_marginTop="60dp" />
 
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:id="@+id/nav_view"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/dark_gray"
-        app:itemTextColor="@color/gray"
-        app:itemIconTint="@drawable/bottom_navigation_selector"
-        app:itemActiveIndicatorStyle="@style/Custom.Indicator"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,7 +17,7 @@ import com.mfpe.vinilos.adapters.AlbumAdapter
 import com.mfpe.vinilos.databinding.FragmentAlbumListBinding
 import com.mfpe.vinilos.utils.PrefsManager
 import com.mfpe.vinilos.viewmodel.AlbumListViewModel
-import android.content.Intent
+import androidx.navigation.fragment.findNavController
 
 class AlbumListFragment : Fragment() {
 
@@ -73,10 +73,10 @@ class AlbumListFragment : Fragment() {
         if (PrefsManager.getInstance(requireContext()).getUserType!! == "collector") {
             binding.addAlbumButton.visibility = View.VISIBLE
             binding.addAlbumButton.setOnClickListener {
-                val intent = Intent(context, AddAlbumActivity::class.java)
-                startActivity(intent)
+                findNavController().navigate(R.id.action_albumListFragment_to_addAlbumFragment)
             }
         }
+
 
         albumAdapter = AlbumAdapter(emptyList())
         binding.recyclerAlbums.layoutManager = GridLayoutManager(context, 2)
