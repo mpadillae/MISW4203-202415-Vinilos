@@ -1,0 +1,147 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#000000">
+    <ImageButton
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_arrow_back_ios_new_24"
+        android:contentDescription="@string/back"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_album_title"
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="6dp" />
+
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/name_hint"
+        android:maxLength="200"
+        android:textColor="#505050"
+        android:background="@drawable/edittext_background"
+        android:padding="12dp"
+        android:textSize="17sp"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="45dp" />
+
+    <EditText
+        android:id="@+id/et_url_cover"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/url_cover_hint"
+        android:textColor="#505050"
+        android:background="@drawable/edittext_background"
+        android:padding="12dp"
+        android:textSize="17sp"
+        app:layout_constraintTop_toBottomOf="@id/et_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="45dp" />
+
+    <Spinner
+        android:id="@+id/sp_genre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:textSize="17sp"
+        app:layout_constraintTop_toBottomOf="@id/et_url_cover"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/spinner_background" />
+
+    <EditText
+        android:id="@+id/et_release_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/release_date_hint"
+        android:inputType="date"
+        android:background="@drawable/edittext_background"
+        android:textColor="#505050"
+        android:padding="12dp"
+        android:textSize="17sp"
+        app:layout_constraintTop_toBottomOf="@id/sp_genre"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="45dp" />
+
+    <Spinner
+        android:id="@+id/sp_record_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:textSize="17sp"
+        app:layout_constraintTop_toBottomOf="@id/et_release_date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/spinner_background" />
+
+    <EditText
+        android:id="@+id/et_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/description_hint"
+        android:maxLength="2000"
+        android:background="@drawable/edittext_background"
+        android:textColor="#505050"
+        android:padding="12dp"
+        android:textSize="17sp"
+        app:layout_constraintTop_toBottomOf="@id/sp_record_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="45dp"
+        android:importantForAutofill="no" />
+
+
+
+    <Button
+        android:id="@+id/btn_add_album"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_button_text"
+        android:backgroundTint="#4CAF50"
+        android:textColor="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@id/et_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="60dp" />
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:id="@+id/nav_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_gray"
+        app:itemTextColor="@color/gray"
+        app:itemIconTint="@drawable/bottom_navigation_selector"
+        app:itemActiveIndicatorStyle="@style/Custom.Indicator"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

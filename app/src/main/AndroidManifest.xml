@@ -29,6 +29,10 @@
         <activity
             android:name=".ui.shared.MainActivity"
             android:exported="false"/>
+
+        <activity
+            android:name=".ui.albums.AddAlbumActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

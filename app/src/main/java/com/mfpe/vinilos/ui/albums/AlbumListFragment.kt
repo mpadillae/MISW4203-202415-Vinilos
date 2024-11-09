@@ -17,7 +17,7 @@ import com.mfpe.vinilos.adapters.AlbumAdapter
 import com.mfpe.vinilos.databinding.FragmentAlbumListBinding
 import com.mfpe.vinilos.utils.PrefsManager
 import com.mfpe.vinilos.viewmodel.AlbumListViewModel
-
+import android.content.Intent
 
 class AlbumListFragment : Fragment() {
 
@@ -68,11 +68,13 @@ class AlbumListFragment : Fragment() {
         Toast.makeText(activity, "Error when retrieving albums.", Toast.LENGTH_LONG).show()
     }
 
+
     private fun setupRecyclerView() {
         if (PrefsManager.getInstance(requireContext()).getUserType!! == "collector") {
             binding.addAlbumButton.visibility = View.VISIBLE
             binding.addAlbumButton.setOnClickListener {
-                Toast.makeText(context, "Add album", Toast.LENGTH_SHORT).show()
+                val intent = Intent(context, AddAlbumActivity::class.java)
+                startActivity(intent)
             }
         }
 
@@ -83,6 +85,7 @@ class AlbumListFragment : Fragment() {
         val itemDecoration = GridSpacingItemDecoration(2, spacingInPixels)
         binding.recyclerAlbums.addItemDecoration(itemDecoration)
     }
+
 
     private fun setupSearchView() {
         val linearLayout1 = binding.searchBar.getChildAt(0) as LinearLayout

@@ -22,15 +22,18 @@ class AlbumAdapter(private var albums: List<Album>) : RecyclerView.Adapter<Album
         return ViewHolder(bind)
     }
 
+
     override fun onBindViewHolder(holder: AlbumAdapter.ViewHolder, position: Int) {
         with(holder) {
             with(filteredAlbumList[position]) {
                 binding.albumName.text = this.name
-                binding.albumAuthor.text = this.performers[0].name
+                binding.albumAuthor.text = this.performers?.getOrNull(0)?.name ?: "Autor desconocido"
+
                 Glide.with(binding.albumImage.context)
                     .load(this.cover)
                     .centerCrop()
                     .into(binding.albumImage)
+
                 binding.albumCard.setOnClickListener {
                     val intent = Intent(binding.root.context, AlbumDetailActivity::class.java)
                     intent.putExtra("album", this)

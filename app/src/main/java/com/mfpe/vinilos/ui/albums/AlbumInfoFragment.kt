@@ -25,7 +25,7 @@ class AlbumInfoFragment(private val album: Album) : Fragment() {
         binding.albumInfoGenre.text = album.genre
         binding.albumInfoReleasedate.text = SimpleDateFormat("dd/MM/yyyy", Locale.US).format(album.releaseDate)
         binding.albumInfoRecord.text = album.recordLabel
-        binding.albumInfoArtist.text = "  •  ${album.performers[0].name}"
+        binding.albumInfoArtist.text = "  •  ${album.performers?.getOrNull(0)?.name ?: "Autor desconocido"}"
 
         return root
     }

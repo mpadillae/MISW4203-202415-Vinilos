@@ -40,13 +40,12 @@ class AlbumDetailActivity : AppCompatActivity() {
 
     private fun setupAlbumHeader() {
         binding.albumName.text = album.name
-        binding.artistName.text = album.performers[0].name
+        binding.artistName.text = album.performers?.getOrNull(0)?.name ?: "Autor desconocido"
         Glide.with(this)
             .load(album.cover)
             .into(binding.albumImageView)
 
         binding.backButton.setOnClickListener { finish() }
-
     }
 
 }
