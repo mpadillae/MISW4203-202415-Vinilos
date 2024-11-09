@@ -1,5 +1,6 @@
 package com.mfpe.vinilos.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
@@ -49,16 +50,18 @@ class CollectorAdapter(private var collectors: List<Collector>) : RecyclerView.A
                 return filterResults
             }
 
+            @SuppressLint("NotifyDataSetChanged")
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
                 filteredCollectorList = results?.values as List<Collector>
-                notifyItemRangeChanged(0, filteredCollectorList.size)
+                notifyDataSetChanged()
             }
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateCollectors(newCollectors: List<Collector>) {
         collectors = newCollectors
         this.filteredCollectorList = collectors
-        notifyItemRangeChanged(0, filteredCollectorList.size)
+        notifyDataSetChanged()
     }
 }
