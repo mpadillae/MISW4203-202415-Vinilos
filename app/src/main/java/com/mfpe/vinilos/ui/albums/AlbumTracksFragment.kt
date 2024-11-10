@@ -35,10 +35,14 @@ class AlbumTracksFragment(private val album: Album) : Fragment() {
             }
         }
 
-        val trackAdapter = TrackAdapter(album.cover, album.tracks)
+
+        val tracks = album.tracks ?: emptyList()
+        val trackAdapter = TrackAdapter(album.cover, tracks)
+
         binding.recyclerTracks.layoutManager = LinearLayoutManager(context)
         binding.recyclerTracks.adapter = trackAdapter
-        binding.recyclerTracks.visibility = if (album.tracks.isEmpty()) View.GONE else View.VISIBLE
-        binding.emptyView.visibility = if (album.tracks.isEmpty()) View.VISIBLE else View.GONE
+
+        binding.recyclerTracks.visibility = if (tracks.isEmpty()) View.GONE else View.VISIBLE
+        binding.emptyView.visibility = if (tracks.isEmpty()) View.VISIBLE else View.GONE
     }
 }

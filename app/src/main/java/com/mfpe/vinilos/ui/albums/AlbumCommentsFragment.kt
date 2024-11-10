@@ -26,10 +26,11 @@ class AlbumCommentsFragment(private val album: Album) : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        val commentAdapter = CommentAdapter(album.comments)
+        val commentAdapter = CommentAdapter(album.comments ?: emptyList())
         binding.recyclerComments.layoutManager = LinearLayoutManager(context)
         binding.recyclerComments.adapter = commentAdapter
-        binding.recyclerComments.visibility = if (album.comments.isEmpty()) View.GONE else View.VISIBLE
-        binding.emptyView.visibility = if (album.comments.isEmpty()) View.VISIBLE else View.GONE
+        val comments = album.comments ?: emptyList()
+        binding.recyclerComments.visibility = if (comments.isEmpty()) View.GONE else View.VISIBLE
+        binding.emptyView.visibility = if (comments.isEmpty()) View.VISIBLE else View.GONE
     }
 }

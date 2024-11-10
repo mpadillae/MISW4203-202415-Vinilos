@@ -15,6 +15,13 @@
     <string name="no_tracks_message">No hay canciones para mostrar.</string>
     <string name="no_comments_message">No hay comentarios para mostrar.</string>
     <string name="no_albums_message">No hay álbumes para mostrar.</string>
+    <string name="add_album_title">Agregar álbum</string>
+    <string name="name_hint">Nombre</string>
+    <string name="url_cover_hint">URL Portada</string>
+    <string name="release_date_hint">Fecha de estreno (dd/mm/aaaa)</string>
+    <string name="description_hint">Descripción</string>
+    <string name="add_button_text">Agregar</string>
+    <string name="back">Regresar</string>
     <string name="no_bands_message">No hay bandas para mostrar.</string>
     <string name="no_musicians_message">No hay Músicos para mostrar.</string>
     <string name="image_artist">Imagen del artista.</string>

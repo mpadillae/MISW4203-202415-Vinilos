@@ -15,4 +15,9 @@ class AlbumRepository {
         return albumService.getAlbums()
     }
 
+    fun addAlbum(album: Album): Call<Album> {
+        return albumService.addAlbum(album)
+    }
+
+
 }
