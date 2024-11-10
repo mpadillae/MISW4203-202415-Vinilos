@@ -27,7 +27,7 @@ class ArtistListFragment : Fragment() {
         val adapter = ArtistListPagerAdapter(this)
         binding.viewPager.adapter = adapter
 
-        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+        TabLayoutMediator(binding.tableLayoutArtist, binding.viewPager) { tab, position ->
             tab.text = when (position) {
                 0 -> "Músicos"
                 1 -> "Bandas"

@@ -15,6 +15,7 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import com.mfpe.vinilos.R
+import com.mfpe.vinilos.data.model.Musician
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
@@ -34,7 +35,7 @@ class MusicianListTest {
     var mActivityScenarioRule = ActivityScenarioRule(UserSelectActivity::class.java)
 
     @Test
-    fun albumDetailTest() {
+    fun MusicianDetailTest() {
         val button = onView(
             allOf(
                 withId(R.id.button_collectors), withText("COLECCIONISTA"),
