@@ -84,6 +84,24 @@ class MusicianListTest {
         )
         sleep(5000)
         linearLayout.check(matches(isDisplayed()))
+
+        val appCompatImageView = onView(
+            allOf(
+                withId(R.id.exitButton), withContentDescription("Salir al menú principal"),
+                childAtPosition(
+                    allOf(
+                        withId(R.id.toolbar),
+                        childAtPosition(
+                            withId(R.id.container),
+                            0
+                        )
+                    ),
+                    2
+                ),
+                isDisplayed()
+            )
+        )
+        appCompatImageView.perform(click())
     }
 
     private fun childAtPosition(

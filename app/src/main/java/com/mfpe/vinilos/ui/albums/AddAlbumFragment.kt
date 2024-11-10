@@ -1,21 +1,25 @@
 package com.mfpe.vinilos.ui.albums
 
-import android.os.Bundle
-import android.widget.*
-import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
-import com.mfpe.vinilos.viewmodel.AlbumListViewModel
 import android.graphics.Color
-import com.mfpe.vinilos.data.model.Album
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
-import androidx.fragment.app.Fragment
-import com.mfpe.vinilos.databinding.FragmentAddAlbumBinding
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Spinner
+import android.widget.TextView
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.mfpe.vinilos.data.model.requests.CreateAlbumRequest
+import com.mfpe.vinilos.databinding.FragmentAddAlbumBinding
+import com.mfpe.vinilos.viewmodel.AlbumListViewModel
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class AddAlbumFragment : Fragment() {
 
@@ -66,7 +70,7 @@ class AddAlbumFragment : Fragment() {
                 }
 
                 if (releaseDate != null) {
-                    val album = Album(
+                    val createAlbumRequest = CreateAlbumRequest(
                         name = etName.text.toString(),
                         cover = etUrlCover.text.toString(),
                         genre = spGenre.selectedItem.toString(),
@@ -75,7 +79,7 @@ class AddAlbumFragment : Fragment() {
                         description = etDescription.text.toString()
                     )
 
-                    albumListViewModel.addAlbum(album) { success ->
+                    albumListViewModel.addAlbum(createAlbumRequest) { success ->
                         if (success) {
                             Toast.makeText(requireContext(), "Álbum agregado exitosamente", Toast.LENGTH_LONG).show()
                             findNavController().popBackStack()

@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mfpe.vinilos.data.model.Album
+import com.mfpe.vinilos.data.model.requests.CreateAlbumRequest
 import com.mfpe.vinilos.data.repository.AlbumRepository
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,8 +22,8 @@ class AlbumListViewModel : ViewModel() {
     private var _networkError = MutableLiveData(false)
     val networkError: LiveData<Boolean> get() = _networkError
 
-    fun addAlbum(album: Album, onResult: (Boolean) -> Unit) {
-        albumRepository.addAlbum(album).enqueue(object : Callback<Album> {
+    fun addAlbum(createAlbumRequest: CreateAlbumRequest, onResult: (Boolean) -> Unit) {
+        albumRepository.addAlbum(createAlbumRequest).enqueue(object : Callback<Album> {
             override fun onResponse(call: Call<Album>, response: Response<Album>) {
                 if (response.isSuccessful) {
                     onResult(true)
