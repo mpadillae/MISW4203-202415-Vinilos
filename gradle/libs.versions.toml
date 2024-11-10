@@ -1,5 +1,5 @@
 [versions]
-agp = "8.4.0"
+agp = "8.7.2"
 kotlin = "1.9.24"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -15,6 +15,10 @@ navigationUiKtx = "2.8.3"
 activity = "1.9.3"
 
 [libraries]
+retrofit = { module = "com.squareup.retrofit2:retrofit", version = "2.11.0" }
+retrofit-gson = { module = "com.squareup.retrofit2:converter-gson", version = "2.11.0" }
+glide = { module = "com.github.bumptech.glide:glide", version = "4.16.0" }
+materialratingbar = { module = "me.zhanghai.android.materialratingbar:library", version = "1.4.0" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }

@@ -50,7 +50,7 @@ class AddAlbumFragment : Fragment() {
         setupSpinners()
 
         binding.backButton.setOnClickListener {
-            findNavController().popBackStack() // Navegar hacia atrás
+            findNavController().popBackStack()
         }
 
         btnAddAlbum.setOnClickListener {
@@ -100,73 +100,58 @@ class AddAlbumFragment : Fragment() {
     }
 
 
-
     private fun setupSpinners() {
-        val genres = listOf("Classical", "Salsa", "Rock", "Folk")
-        val recordLabels = listOf("Sony Music", "EMI", "Discos Fuentes", "Elektra", "Fania Records")
 
-        val genreAdapter = object : ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_item, genres) {
-            override fun getView(position: Int, convertView: android.view.View?, parent: android.view.ViewGroup): android.view.View {
-                val view = super.getView(position, convertView, parent)
-                (view as TextView).apply {
-                    text = if (spGenre.selectedItemPosition == -1) "Género" else getItem(position)
-                    setTextColor(
-                        if (spGenre.selectedItemPosition == -1)
-                            Color.parseColor("#505050")
-                        else Color.BLACK
-                    )
-                }
-                return view
-            }
-        }
+        val genres = listOf("Seleccione un género", "Classical", "Salsa", "Rock", "Folk")
+        val recordLabels = listOf("Seleccione una disquera", "Sony Music", "EMI", "Discos Fuentes", "Elektra", "Fania Records")
 
+        val genreAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, genres)
         genreAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spGenre.adapter = genreAdapter
-        spGenre.setSelection(-1)
+        spGenre.setSelection(0)
 
-        val recordLabelAdapter = object : ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_item, recordLabels) {
-            override fun getView(position: Int, convertView: android.view.View?, parent: android.view.ViewGroup): android.view.View {
-                val view = super.getView(position, convertView, parent)
-                (view as TextView).apply {
-                    text = if (spRecordLabel.selectedItemPosition == -1) "Disquera" else getItem(position)
-                    setTextColor(
-                        if (spRecordLabel.selectedItemPosition == -1)
-                            Color.parseColor("#505050")
-                        else Color.BLACK
-                    )
-                }
-                return view
-            }
-        }
+        val recordLabelAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, recordLabels)
         recordLabelAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spRecordLabel.adapter = recordLabelAdapter
-        spRecordLabel.setSelection(-1)
+        spRecordLabel.setSelection(0)
     }
+
     private fun validateFields(): Boolean {
         var isValid = true
-
 
         if (etName.text.isEmpty()) {
             etName.error = "Este campo es obligatorio"
             isValid = false
         }
 
-
         if (etReleaseDate.text.isEmpty() || !etReleaseDate.text.toString().matches(Regex("\\d{2}/\\d{2}/\\d{4}"))) {
             etReleaseDate.error = "Fecha inválida, use el formato dd/mm/aaaa"
             isValid = false
         }
-
-
-        if (spGenre.selectedItem == "Género") {
-            Toast.makeText(requireContext(), "Por favor, selecciona un género", Toast.LENGTH_SHORT).show() // Corrección
+        if (spGenre.selectedItem == "Seleccione un género") {
+            val errorText = spGenre.selectedView as TextView
+            errorText.error = ""
+            errorText.text = "Seleccione un género"
             isValid = false
+        } else {
+            val errorText = spGenre.selectedView as TextView
+            errorText.setTextColor(Color.BLACK)
         }
+
+        if (spRecordLabel.selectedItem == "Seleccione una disquera") {
+            val errorText = spRecordLabel.selectedView as TextView
+            errorText.error = ""
+            errorText.text = "Seleccione una disquera"
+            isValid = false
+        } else {
+            val errorText = spRecordLabel.selectedView as TextView
+            errorText.setTextColor(Color.BLACK)
+        }
+
         if (etDescription.text.isEmpty()) {
             etDescription.error = "Este campo es obligatorio"
             isValid = false
         }
-
 
         if (etUrlCover.text.isEmpty()) {
             etUrlCover.error = "Este campo es obligatorio"
@@ -178,6 +163,5 @@ class AddAlbumFragment : Fragment() {
 
         return isValid
     }
-
 
 }
