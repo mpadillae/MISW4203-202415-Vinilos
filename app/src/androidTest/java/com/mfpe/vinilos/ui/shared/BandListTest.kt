@@ -34,7 +34,7 @@ class BandListTest {
     var mActivityScenarioRule = ActivityScenarioRule(UserSelectActivity::class.java)
 
     @Test
-    fun albumDetailTest() {
+    fun bandDetailTest() {
         val button = onView(
             allOf(
                 withId(R.id.button_collectors), withText("COLECCIONISTA"),
@@ -68,23 +68,6 @@ class BandListTest {
             )
         )
         bottomNavigationItemView.perform(click())
-
-        sleep(5000)
-
-        val artistNavigationItemView = onView(
-            allOf(
-                withId(R.id.recycler_bands), withContentDescription("Bandas"),
-                childAtPosition(
-                    childAtPosition(
-                        withId(R.id.navigation_artists),
-                        0
-                    ),
-                    1
-                ),
-                isDisplayed()
-            )
-        )
-        artistNavigationItemView.perform(click())
 
         sleep(5000)
 
