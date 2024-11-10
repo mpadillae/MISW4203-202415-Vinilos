@@ -1,6 +1,5 @@
 package com.mfpe.vinilos.ui.artists
 
-import GridSpacingItemDecoration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.mfpe.vinilos.R
 import com.mfpe.vinilos.adapters.BandAdapter
 import com.mfpe.vinilos.databinding.FragmentBandListBinding
+import com.mfpe.vinilos.utils.GridSpacingItemDecoration
 import com.mfpe.vinilos.viewmodel.ArtistListViewModel
 
 class BandListFragment: Fragment() {
@@ -58,7 +58,7 @@ class BandListFragment: Fragment() {
         binding.recyclerBands.layoutManager = GridLayoutManager(context, 2)
         binding.recyclerBands.adapter = bandAdapter
         val spacingInPixels = resources.getDimensionPixelSize(R.dimen.activity_custom_margin)
-        val itemDecoration = GridSpacingItemDecoration(2, spacingInPixels)
+        val itemDecoration = GridSpacingItemDecoration(spacingInPixels)
         binding.recyclerBands.addItemDecoration(itemDecoration)
     }
 

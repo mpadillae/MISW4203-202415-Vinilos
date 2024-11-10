@@ -1,5 +1,6 @@
 package com.mfpe.vinilos.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
@@ -45,11 +46,10 @@ class MusicianAdapter(private var musicians: List<Musician>): RecyclerView.Adapt
             }}
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateMusicians(newMusicians: List<Musician>) {
         musicians = newMusicians
         notifyDataSetChanged()
-
-
     }
 
 }

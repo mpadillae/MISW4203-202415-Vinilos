@@ -1,5 +1,6 @@
 package com.mfpe.vinilos.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
@@ -34,6 +35,7 @@ class BandAdapter(private var bands: List<Band>) : RecyclerView.Adapter<BandAdap
         }}
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateBands(newBands: List<Band>) {
         bands = newBands
         notifyDataSetChanged()

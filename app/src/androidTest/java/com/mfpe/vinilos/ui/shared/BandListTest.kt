@@ -52,7 +52,7 @@ class BandListTest {
             )
         )
         button.perform(click())
-        sleep(2000)
+        sleep(5000)
 
         val bottomNavigationItemView = onView(
             allOf(
@@ -86,7 +86,7 @@ class BandListTest {
         )
         artistNavigationItemView.perform(click())
 
-        sleep(2000)
+        sleep(5000)
 
         val linearLayout = onView(
             allOf(
