@@ -4,12 +4,12 @@ Este proyecto es una aplicación Android desarrollada utilizando Kotlin. Utiliza
 
 ## Integrantes
 
-| Nombre                 | Correo                       |
-|------------------------|------------------------------|
-| Miguel Fernando Padilla Espino | m.padillae@uniandes.edu.co |
-| Johann Sebastian Páez Campos | js.paezc1@uniandes.edu.co |
+| Nombre                            | Correo                       |
+|-----------------------------------|------------------------------|
+| Miguel Fernando Padilla Espino    | m.padillae@uniandes.edu.co   |
+| Johann Sebastian Páez Campos      | js.paezc1@uniandes.edu.co    |
 | Juan Sebastian Cervantes Restrepo | js.cervantes@uniandes.edu.co |
-| Julian Esteban Oliveros Forero | je.oliverosf@uniandes.edu.co |
+| Julian Esteban Oliveros Forero    | je.oliverosf@uniandes.edu.co |
 
 ## Requisitos previos
 Para levantar este proyecto necesitarás:
@@ -76,7 +76,7 @@ Para levantar este proyecto necesitarás:
 ![image](https://i.ibb.co/Nm3vkV1/Captura-de-pantalla-2024-10-24-a-la-s-10-49-52.png)
 También se pueden ejecutar las pruebas directamente haciendo clic derecho sobre el paquete y seleccionando la opción `Run 'Tests in vinilos.app.UnitTest'`.
 
-<p align="center">
+<p style="text-align: center">
   <img src="https://github.com/user-attachments/assets/cea232e8-c242-4479-b609-41858addba80" alt="Picture" width="564" height="507"  />
 </p>
 
@@ -84,15 +84,15 @@ También se pueden ejecutar las pruebas directamente haciendo clic derecho sobre
 1. Conecta un dispositivo Android vía USB o inicia un emulador de Android.
 2. Ve a `Run > Edit Configurations`.
 3. Haz clic en `+` para agregar una nueva configuración y selecciona `Android Instrumented Tests` de la lista.
-3. Ponle un nombre. En este caso: `Espresso tests`.
-4. Establece el `Module` en el módulo de la aplicación `(vinilos.app.androidTest)`.
+4. Ponle un nombre. En este caso: `Espresso tests`.
+5. Establece el `Module` en el módulo de la aplicación `(vinilos.app.androidTest)`.
 6. Haz clic en `Apply` y luego en `OK`.
 7. Ejecuta las pruebas seleccionando `Run > Run 'Espresso tests'`.
 
 ![image](https://i.ibb.co/8gG3bNP/Captura-de-pantalla-2024-10-24-a-la-s-10-57-44.png)
 También se pueden ejecutar las pruebas directamente haciendo clic derecho sobre el paquete y seleccionando la opción `Run 'All tests'`.
 
-<p align="center">
+<p style="text-align: center">
   <img src="https://github.com/user-attachments/assets/046b443e-ca2d-47a4-b113-fdb91bbb8252" alt="Picture" width="529"   />
 </p>
 

@@ -1,5 +1,6 @@
 package com.mfpe.vinilos.adapters
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,7 +12,8 @@ import com.mfpe.vinilos.data.model.Album
 import com.mfpe.vinilos.databinding.AlbumItemBinding
 import com.mfpe.vinilos.ui.albums.AlbumDetailActivity
 
-class AlbumAdapter(private var albums: List<Album>) : RecyclerView.Adapter<AlbumAdapter.ViewHolder>(), Filterable  {
+class AlbumAdapter(private var albums: List<Album>) :
+    RecyclerView.Adapter<AlbumAdapter.ViewHolder>(), Filterable {
 
     private var filteredAlbumList: List<Album> = albums
 
@@ -26,7 +28,8 @@ class AlbumAdapter(private var albums: List<Album>) : RecyclerView.Adapter<Album
         with(holder) {
             with(filteredAlbumList[position]) {
                 binding.albumName.text = this.name
-                binding.albumAuthor.text = this.performers[0].name
+                binding.albumAuthor.text =
+                    if (this.performers.isNotEmpty()) this.performers[0].name else ""
                 Glide.with(binding.albumImage.context)
                     .load(this.cover)
                     .centerCrop()
@@ -59,6 +62,7 @@ class AlbumAdapter(private var albums: List<Album>) : RecyclerView.Adapter<Album
                 return filterResults
             }
 
+            @SuppressLint("NotifyDataSetChanged")
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
                 filteredAlbumList = results?.values as List<Album>
                 notifyDataSetChanged()
@@ -66,6 +70,7 @@ class AlbumAdapter(private var albums: List<Album>) : RecyclerView.Adapter<Album
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateAlbums(newAlbums: List<Album>) {
         albums = newAlbums
         this.filteredAlbumList = albums

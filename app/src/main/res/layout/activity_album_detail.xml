@@ -10,6 +10,7 @@
     <ImageView
         android:id="@+id/back_button"
         android:foreground="?android:attr/selectableItemBackground"
+        android:contentDescription="@string/ivArrowLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -63,6 +64,7 @@
             android:layout_height="30dp"
             android:layout_width="30dp"
             android:id="@+id/artist_image_view"
+            android:contentDescription="@string/ivProfile"
             android:src="@drawable/ic_avatar" />
 
         <LinearLayout
@@ -86,7 +88,7 @@
             <TextView
                 android:layout_marginTop="4dp"
                 android:id="@+id/album_label"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 android:text="@string/album_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

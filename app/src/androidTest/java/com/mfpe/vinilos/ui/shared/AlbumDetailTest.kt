@@ -66,7 +66,7 @@ class AlbumDetailTest {
                 isDisplayed()
             )
         )
-        sleep(3000)
+        sleep(5000)
         cardView.perform(click())
 
         val imageView = onView(
@@ -76,7 +76,7 @@ class AlbumDetailTest {
                 isDisplayed()
             )
         )
-        sleep(3000)
+        sleep(5000)
         imageView.check(matches(isDisplayed()))
 
         val imageView2 = onView(
@@ -91,7 +91,7 @@ class AlbumDetailTest {
                 isDisplayed()
             )
         )
-        sleep(3000)
+        sleep(5000)
         imageView2.check(matches(isDisplayed()))
 
         val tabView = onView(
@@ -107,7 +107,7 @@ class AlbumDetailTest {
                 isDisplayed()
             )
         )
-        sleep(3000)
+        sleep(5000)
         tabView.perform(click())
 
         val tabView2 = onView(
@@ -123,7 +123,7 @@ class AlbumDetailTest {
                 isDisplayed()
             )
         )
-        sleep(3000)
+        sleep(5000)
         tabView2.perform(click())
 
         val tabView3 = onView(
@@ -139,8 +139,43 @@ class AlbumDetailTest {
                 isDisplayed()
             )
         )
-        sleep(3000)
+        sleep(5000)
         tabView3.perform(click())
+
+        val appCompatImageView = onView(
+            allOf(
+                withId(R.id.back_button), withContentDescription("Devolverse"),
+                childAtPosition(
+                    childAtPosition(
+                        withId(android.R.id.content),
+                        0
+                    ),
+                    0
+                ),
+                isDisplayed()
+            )
+        )
+        sleep(5000)
+        appCompatImageView.perform(click())
+
+        val appCompatImageView2 = onView(
+            allOf(
+                withId(R.id.exitButton), withContentDescription("Salir al menú principal"),
+                childAtPosition(
+                    allOf(
+                        withId(R.id.toolbar),
+                        childAtPosition(
+                            withId(R.id.container),
+                            0
+                        )
+                    ),
+                    2
+                ),
+                isDisplayed()
+            )
+        )
+        sleep(5000)
+        appCompatImageView2.perform(click())
     }
 
     private fun childAtPosition(

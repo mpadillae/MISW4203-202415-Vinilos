@@ -9,7 +9,12 @@
         android:id="@+id/navigation_albums"
         android:name="com.mfpe.vinilos.ui.albums.AlbumListFragment"
         android:label="@string/title_albums"
-        tools:layout="@layout/fragment_album_list" />
+        tools:layout="@layout/fragment_album_list">
+
+        <action
+            android:id="@+id/action_albumListFragment_to_addAlbumFragment"
+            app:destination="@id/addAlbumFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_artists"
@@ -22,4 +27,10 @@
         android:name="com.mfpe.vinilos.ui.collectors.CollectorListFragment"
         android:label="@string/title_collections"
         tools:layout="@layout/fragment_collector_list" />
+
+    <fragment
+        android:id="@+id/addAlbumFragment"
+        android:name="com.mfpe.vinilos.ui.albums.AddAlbumFragment"
+        android:label="Add Album"
+        tools:layout="@layout/fragment_add_album" />
 </navigation>

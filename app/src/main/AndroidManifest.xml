@@ -29,6 +29,7 @@
         <activity
             android:name=".ui.shared.MainActivity"
             android:exported="false"/>
+
     </application>
 
 </manifest>

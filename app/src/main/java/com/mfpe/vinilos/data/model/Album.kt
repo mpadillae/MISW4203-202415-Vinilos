@@ -3,7 +3,7 @@ package com.mfpe.vinilos.data.model
 import java.io.Serializable
 import java.util.Date
 
-data class Album (
+data class Album(
     val id: Int,
     val name: String,
     val cover: String,

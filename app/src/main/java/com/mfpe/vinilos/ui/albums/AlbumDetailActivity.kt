@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
+import com.mfpe.vinilos.R
 import com.mfpe.vinilos.adapters.AlbumDetailPagerAdapter
 import com.mfpe.vinilos.databinding.ActivityAlbumDetailBinding
 import com.mfpe.vinilos.data.model.Album
@@ -29,9 +30,9 @@ class AlbumDetailActivity : AppCompatActivity() {
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = when (position) {
-                0 -> "Información"
-                1 -> "Canciones"
-                2 -> "Comentarios"
+                0 -> getString(R.string.tabInformation)
+                1 -> getString(R.string.tabSongs)
+                2 -> getString(R.string.tabComments)
                 else -> null
             }
         }.attach()
@@ -40,7 +41,7 @@ class AlbumDetailActivity : AppCompatActivity() {
 
     private fun setupAlbumHeader() {
         binding.albumName.text = album.name
-        binding.artistName.text = album.performers[0].name
+        binding.artistName.text = if (album.performers.isNotEmpty()) album.performers[0].name else ""
         Glide.with(this)
             .load(album.cover)
             .into(binding.albumImageView)
