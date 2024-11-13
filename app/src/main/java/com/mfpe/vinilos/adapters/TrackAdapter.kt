@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.mfpe.vinilos.databinding.TrackItemBinding
 import com.mfpe.vinilos.data.model.Track
 
@@ -23,6 +25,7 @@ class TrackAdapter(private val albumCover: String, private var tracks: List<Trac
                 binding.trackName.text = this.name
                 Glide.with(binding.trackImage.context)
                     .load(albumCover)
+                    .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
                     .centerCrop()
                     .into(binding.trackImage)
             }

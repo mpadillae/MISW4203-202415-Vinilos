@@ -6,14 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.mfpe.vinilos.R
 import com.mfpe.vinilos.data.model.requests.CreateAlbumRequest
 import com.mfpe.vinilos.databinding.FragmentAddAlbumBinding
 import com.mfpe.vinilos.viewmodel.AlbumListViewModel
@@ -23,13 +21,6 @@ import java.util.Locale
 
 class AddAlbumFragment : Fragment() {
 
-    private lateinit var etName: EditText
-    private lateinit var etUrlCover: EditText
-    private lateinit var spGenre: Spinner
-    private lateinit var etReleaseDate: EditText
-    private lateinit var spRecordLabel: Spinner
-    private lateinit var etDescription: EditText
-    private lateinit var btnAddAlbum: Button
     private lateinit var albumListViewModel: AlbumListViewModel
     private var _binding: FragmentAddAlbumBinding? = null
     private val binding get() = _binding!!
@@ -37,19 +28,11 @@ class AddAlbumFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentAddAlbumBinding.inflate(inflater, container, false)
         val view = binding.root
 
         albumListViewModel = ViewModelProvider(this)[AlbumListViewModel::class.java]
-
-        etName = binding.etName
-        etUrlCover = binding.etUrlCover
-        spGenre = binding.spGenre
-        etReleaseDate = binding.etReleaseDate
-        spRecordLabel = binding.spRecordLabel
-        etDescription = binding.etDescription
-        btnAddAlbum = binding.btnAddAlbum
 
         setupSpinners()
 
@@ -57,9 +40,9 @@ class AddAlbumFragment : Fragment() {
             findNavController().popBackStack()
         }
 
-        btnAddAlbum.setOnClickListener {
+        binding.btnAddAlbum.setOnClickListener {
             if (validateFields()) {
-                val releaseDateString = etReleaseDate.text.toString()
+                val releaseDateString = binding.etReleaseDate.text.toString()
 
 
                 val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
@@ -71,12 +54,12 @@ class AddAlbumFragment : Fragment() {
 
                 if (releaseDate != null) {
                     val createAlbumRequest = CreateAlbumRequest(
-                        name = etName.text.toString(),
-                        cover = etUrlCover.text.toString(),
-                        genre = spGenre.selectedItem.toString(),
+                        name = binding.etName.text.toString(),
+                        cover = binding.etUrlCover.text.toString(),
+                        genre = binding.spGenre.selectedItem.toString(),
                         releaseDate = releaseDate,
-                        recordLabel = spRecordLabel.selectedItem.toString(),
-                        description = etDescription.text.toString()
+                        recordLabel = binding.spRecordLabel.selectedItem.toString(),
+                        description = binding.etDescription.text.toString()
                     )
 
                     albumListViewModel.addAlbum(createAlbumRequest) { success ->
@@ -87,6 +70,7 @@ class AddAlbumFragment : Fragment() {
                             Toast.makeText(requireContext(), "Error al agregar el álbum", Toast.LENGTH_LONG).show()
                         }
                     }
+
                 } else {
                     Toast.makeText(requireContext(), "Fecha inválida", Toast.LENGTH_SHORT).show()
                 }
@@ -111,57 +95,57 @@ class AddAlbumFragment : Fragment() {
 
         val genreAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, genres)
         genreAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spGenre.adapter = genreAdapter
-        spGenre.setSelection(0)
+        binding.spGenre.adapter = genreAdapter
+        binding.spGenre.setSelection(0)
 
         val recordLabelAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, recordLabels)
         recordLabelAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spRecordLabel.adapter = recordLabelAdapter
-        spRecordLabel.setSelection(0)
+        binding.spRecordLabel.adapter = recordLabelAdapter
+        binding.spRecordLabel.setSelection(0)
     }
 
     private fun validateFields(): Boolean {
         var isValid = true
 
-        if (etName.text.isEmpty()) {
-            etName.error = "Este campo es obligatorio"
+        if (binding.etName.text.isEmpty()) {
+            binding.etName.error = "Este campo es obligatorio"
             isValid = false
         }
 
-        if (etReleaseDate.text.isEmpty() || !etReleaseDate.text.toString().matches(Regex("\\d{2}/\\d{2}/\\d{4}"))) {
-            etReleaseDate.error = "Fecha inválida, use el formato dd/mm/aaaa"
+        if (binding.etReleaseDate.text.isEmpty() || !binding.etReleaseDate.text.toString().matches(Regex("\\d{2}/\\d{2}/\\d{4}"))) {
+            binding.etReleaseDate.error = "Fecha inválida, use el formato dd/mm/aaaa"
             isValid = false
         }
-        if (spGenre.selectedItem == "Seleccione un género") {
-            val errorText = spGenre.selectedView as TextView
+        if (binding.spGenre.selectedItem == "Seleccione un género") {
+            val errorText = binding.spGenre.selectedView as TextView
             errorText.error = ""
-            errorText.text = "Seleccione un género"
+            errorText.text = resources.getString(R.string.selectGenreText)
             isValid = false
         } else {
-            val errorText = spGenre.selectedView as TextView
+            val errorText = binding.spGenre.selectedView as TextView
             errorText.setTextColor(Color.BLACK)
         }
 
-        if (spRecordLabel.selectedItem == "Seleccione una disquera") {
-            val errorText = spRecordLabel.selectedView as TextView
+        if (binding.spRecordLabel.selectedItem == "Seleccione una disquera") {
+            val errorText = binding.spRecordLabel.selectedView as TextView
             errorText.error = ""
-            errorText.text = "Seleccione una disquera"
+            errorText.text = resources.getString(R.string.selectDisqueraText)
             isValid = false
         } else {
-            val errorText = spRecordLabel.selectedView as TextView
+            val errorText = binding.spRecordLabel.selectedView as TextView
             errorText.setTextColor(Color.BLACK)
         }
 
-        if (etDescription.text.isEmpty()) {
-            etDescription.error = "Este campo es obligatorio"
+        if (binding.etDescription.text.isEmpty()) {
+            binding.etDescription.error = "Este campo es obligatorio"
             isValid = false
         }
 
-        if (etUrlCover.text.isEmpty()) {
-            etUrlCover.error = "Este campo es obligatorio"
+        if (binding.etUrlCover.text.isEmpty()) {
+            binding.etUrlCover.error = "Este campo es obligatorio"
             isValid = false
-        } else if (!isValidUrlCover(etUrlCover.text.toString())) {
-            etUrlCover.error = "URL de la portada no válida. Asegúrate de que sigue el formato correcto."
+        } else if (!isValidUrlCover(binding.etUrlCover.text.toString())) {
+            binding.etUrlCover.error = "URL de la portada no válida. Asegúrate de que sigue el formato correcto."
             isValid = false
         }
 

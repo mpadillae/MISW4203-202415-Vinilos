@@ -45,4 +45,6 @@
     <string name="ivTrackItem">Imágen de canción</string>
     <string name="tvAlbumInfoArtist">  •  %s</string>
     <string name="tvNumberFormat">%d</string>
+    <string name="selectGenreText">Seleccione un género</string>
+    <string name="selectDisqueraText">Seleccione una disquera</string>
 </resources>

@@ -22,7 +22,7 @@ import androidx.test.espresso.action.ViewActions.replaceText
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class UserSelectActivityTest {
+class AddAlbumTest {
 
     @Rule
     @JvmField
