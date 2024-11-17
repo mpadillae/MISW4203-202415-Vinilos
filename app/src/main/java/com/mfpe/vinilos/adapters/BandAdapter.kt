@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.mfpe.vinilos.data.model.Band
 import com.mfpe.vinilos.databinding.ArtistItemBinding
 
@@ -30,6 +32,7 @@ class BandAdapter(private var bands: List<Band>) : RecyclerView.Adapter<BandAdap
                 binding.artistName.text = this.name
                 com.bumptech.glide.Glide.with(binding.artistImage.context)
                     .load(this.image)
+                    .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
                     .centerCrop()
                     .into(binding.artistImage)
         }}

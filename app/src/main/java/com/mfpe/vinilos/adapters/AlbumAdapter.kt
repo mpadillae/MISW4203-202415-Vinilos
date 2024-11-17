@@ -8,6 +8,8 @@ import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.mfpe.vinilos.data.model.Album
 import com.mfpe.vinilos.databinding.AlbumItemBinding
 import com.mfpe.vinilos.ui.albums.AlbumDetailActivity
@@ -32,6 +34,7 @@ class AlbumAdapter(private var albums: List<Album>) :
                     if (this.performers.isNotEmpty()) this.performers[0].name else ""
                 Glide.with(binding.albumImage.context)
                     .load(this.cover)
+                    .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
                     .centerCrop()
                     .into(binding.albumImage)
                 binding.albumCard.setOnClickListener {

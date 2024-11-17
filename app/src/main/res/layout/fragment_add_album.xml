@@ -43,6 +43,8 @@
                 android:layout_marginTop="6dp" />
 
             <EditText
+                android:importantForAutofill="no"
+                android:inputType="text"
                 android:id="@+id/et_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -58,6 +60,8 @@
                 android:layout_marginTop="35dp" />
 
             <EditText
+                android:importantForAutofill="no"
+                android:inputType="textUri"
                 android:id="@+id/et_url_cover"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -84,6 +88,7 @@
                 android:background="@drawable/spinner_background" />
 
             <EditText
+                android:importantForAutofill="no"
                 android:id="@+id/et_release_date"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -111,6 +116,7 @@
                 android:background="@drawable/spinner_background" />
 
             <EditText
+                android:inputType="text"
                 android:id="@+id/et_description"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
