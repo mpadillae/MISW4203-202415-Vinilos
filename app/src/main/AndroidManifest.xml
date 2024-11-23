@@ -36,6 +36,10 @@
             android:name=".ui.shared.MainActivity"
             android:exported="false"/>
 
+        <activity android:name=".ui.albums.AddTrackActivity"
+            android:theme="@style/Theme.Vinilos" />
+
+
     </application>
 
 </manifest>
