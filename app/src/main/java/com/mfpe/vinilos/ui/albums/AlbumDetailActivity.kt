@@ -27,16 +27,19 @@ class AlbumDetailActivity : AppCompatActivity() {
 
         setupAlbumHeader()
 
+
         val adapter = AlbumDetailPagerAdapter(this, this.album)
         binding.viewPager.adapter = adapter
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = when (position) {
+
                 0 -> getString(R.string.tabInformation)
                 1 -> getString(R.string.tabSongs)
                 2 -> getString(R.string.tabComments)
                 else -> null
             }
+
         }.attach()
 
     }
