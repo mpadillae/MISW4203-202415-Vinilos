@@ -1,6 +1,7 @@
 package com.mfpe.vinilos.ui.shared
 
 
+import android.annotation.SuppressLint
 import android.view.View
 import android.view.ViewGroup
 import androidx.test.espresso.Espresso.onView
@@ -34,6 +35,7 @@ class MusicianDetailTest {
     @JvmField
     var mActivityScenarioRule = ActivityScenarioRule(UserSelectActivity::class.java)
 
+    @SuppressLint("NotConstructor")
     @Test
     fun MusicianDetailTest() {
         val button = onView(
@@ -72,20 +74,67 @@ class MusicianDetailTest {
         bottomNavigationItemView.perform(click())
 
         sleep(5000)
-        
-        val linearLayout = onView(
+
+        val cardView = onView(
             allOf(
-                withIndex(
-                    withParent(withParent(IsInstanceOf.instanceOf(android.widget.LinearLayout::class.java))),
+                withId(R.id.artist_card),
+                childAtPosition(
+                    childAtPosition(
+                        withId(R.id.recycler_musicians),
+                        0
+                    ),
+                    0
+                )
+            )
+        )
+
+        sleep(5000)
+        cardView.perform(click())
+
+        val imageView = onView(
+            allOf(
+                withId(R.id.artist_image),
+                withParent(withParent(withId(android.R.id.content))),
+                isDisplayed()
+            )
+        )
+        sleep(5000)
+        imageView.check(matches(isDisplayed()))
+
+
+        val tabView = onView(
+            allOf(
+                withContentDescription("Álbumes"),
+                childAtPosition(
+                    childAtPosition(
+                        withId(R.id.tabLayoutArtistDetail),
+                        0
+                    ),
                     0
                 ),
                 isDisplayed()
             )
         )
         sleep(5000)
-        linearLayout.check(matches(isDisplayed()))
+        tabView.perform(click())
 
         val appCompatImageView = onView(
+            allOf(
+                withId(R.id.back_button), withContentDescription("Devolverse"),
+                childAtPosition(
+                    childAtPosition(
+                        withId(android.R.id.content),
+                        0
+                    ),
+                    0
+                ),
+                isDisplayed()
+            )
+        )
+        sleep(5000)
+        appCompatImageView.perform(click())
+
+        val appCompatImageView2 = onView(
             allOf(
                 withId(R.id.exitButton), withContentDescription("Salir al menú principal"),
                 childAtPosition(
@@ -101,7 +150,9 @@ class MusicianDetailTest {
                 isDisplayed()
             )
         )
-        appCompatImageView.perform(click())
+        sleep(5000)
+        appCompatImageView2.perform(click())
+
     }
 
     private fun childAtPosition(

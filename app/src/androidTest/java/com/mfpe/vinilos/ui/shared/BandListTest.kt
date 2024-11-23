@@ -71,6 +71,21 @@ class BandListTest {
 
         sleep(5000)
 
+        val tabViewBands = onView(
+            allOf(
+                withContentDescription("Bandas"),
+                childAtPosition(
+                    childAtPosition(
+                        withId(R.id.tabLayoutArtist),
+                        0
+                    ),
+                    1
+                ),
+                isDisplayed()
+            )
+        )
+        tabViewBands.perform(click())
+
         val linearLayout = onView(
             allOf(
                 withIndex(
