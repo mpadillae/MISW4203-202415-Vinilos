@@ -13,7 +13,7 @@ class BandDetailPagerAdapter(activity: BandDetailActivity,private val musicians:
     override fun createFragment(position: Int): Fragment {
         return when (position){
             0 -> MusicianListFragment(musicians)
-            1 -> AlbumListFragment()
+            1 -> AlbumListFragment(albums,true)
             else -> throw IllegalStateException("Unexpected position $position")
         }
     }

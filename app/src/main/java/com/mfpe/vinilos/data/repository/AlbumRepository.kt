@@ -20,5 +20,9 @@ class AlbumRepository {
         return albumService.addAlbum(createAlbumRequest)
     }
 
+    fun getAlbumById(id: Int): Call<Album>{
+        return albumService.getAlbumById(id)
+    }
+
 
 }
