@@ -27,6 +27,12 @@
             android:name=".ui.albums.AlbumDetailActivity"
             android:exported="false"/>
         <activity
+            android:name=".ui.artists.BandDetailActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".ui.artists.MusicianDetailActivity"
+            android:exported="false"/>
+        <activity
             android:name=".ui.shared.MainActivity"
             android:exported="false"/>
 

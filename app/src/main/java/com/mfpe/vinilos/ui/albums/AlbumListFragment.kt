@@ -18,8 +18,12 @@ import com.mfpe.vinilos.databinding.FragmentAlbumListBinding
 import com.mfpe.vinilos.utils.PrefsManager
 import com.mfpe.vinilos.viewmodel.AlbumListViewModel
 import androidx.navigation.fragment.findNavController
+import com.mfpe.vinilos.data.model.Album
 
-class AlbumListFragment : Fragment() {
+class AlbumListFragment(
+    private val albums: List<Album>? = null,
+    private val comeFromArtistDetail: Boolean? = false
+) : Fragment() {
 
     private var _binding: FragmentAlbumListBinding? = null
     private val binding get() = _binding!!
@@ -35,22 +39,46 @@ class AlbumListFragment : Fragment() {
         _binding = FragmentAlbumListBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        if (comeFromArtistDetail == true) {
+            binding.searchBar.visibility = View.GONE // Hide SearchView
+        } else {
+            binding.searchBar.visibility = View.VISIBLE // Show SearchView
+            setupSearchView()
+        }
+
         setupRecyclerView()
-        setupSearchView()
 
-        vm.albums.observe(viewLifecycleOwner) { albums ->
-            albums?.let {
-                albumAdapter.updateAlbums(it)
-                binding.emptyView.visibility = if (it.isNotEmpty()) View.GONE else View.VISIBLE
-                binding.recyclerAlbums.visibility = if (it.isNotEmpty()) View.VISIBLE else View.GONE
+        if (albums != null) {
+            val sanitizedAlbums = albums.map { album ->
+                album.copy(
+                    tracks = album.tracks ?: emptyList(),
+                    performers = album.performers ?: emptyList(),
+                    comments = album.comments ?: emptyList()
+                )
             }
+            albumAdapter.updateAlbums(sanitizedAlbums)
+            binding.emptyView.visibility = if (sanitizedAlbums.isNotEmpty()) View.GONE else View.VISIBLE
+            binding.recyclerAlbums.visibility = if (sanitizedAlbums.isNotEmpty()) View.VISIBLE else View.GONE
         }
+        else {
+            if (comeFromArtistDetail == false) {
+                setupSearchView()
+            }
 
-        vm.networkError.observe(viewLifecycleOwner) { isNetworkError ->
-            if (isNetworkError) onNetworkError()
+            vm.albums.observe(viewLifecycleOwner) { albums ->
+                albums?.let {
+                    albumAdapter.updateAlbums(it)
+                    binding.emptyView.visibility = if (it.isNotEmpty()) View.GONE else View.VISIBLE
+                    binding.recyclerAlbums.visibility = if (it.isNotEmpty()) View.VISIBLE else View.GONE
+                }
+            }
+
+            vm.networkError.observe(viewLifecycleOwner) { isNetworkError ->
+                if (isNetworkError) onNetworkError()
+            }
+
+            vm.fetchAlbums()
         }
-
-        vm.fetchAlbums()
         return root
     }
 
