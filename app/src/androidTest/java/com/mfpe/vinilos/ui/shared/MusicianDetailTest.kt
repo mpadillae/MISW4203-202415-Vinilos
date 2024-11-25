@@ -1,6 +1,7 @@
 package com.mfpe.vinilos.ui.shared
 
 
+import android.annotation.SuppressLint
 import android.view.View
 import android.view.ViewGroup
 import androidx.test.espresso.Espresso.onView
@@ -15,6 +16,7 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import com.mfpe.vinilos.R
+import com.mfpe.vinilos.data.model.Musician
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
@@ -27,14 +29,15 @@ import java.lang.Thread.sleep
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class BandListTest {
+class MusicianDetailTest {
 
     @Rule
     @JvmField
     var mActivityScenarioRule = ActivityScenarioRule(UserSelectActivity::class.java)
 
+    @SuppressLint("NotConstructor")
     @Test
-    fun bandDetailTest() {
+    fun MusicianDetailTest() {
         val button = onView(
             allOf(
                 withId(R.id.button_collectors), withText("COLECCIONISTA"),
@@ -54,6 +57,7 @@ class BandListTest {
         button.perform(click())
         sleep(5000)
 
+
         val bottomNavigationItemView = onView(
             allOf(
                 withId(R.id.navigation_artists), withContentDescription("Artistas"),
@@ -71,34 +75,66 @@ class BandListTest {
 
         sleep(5000)
 
-        val tabViewBands = onView(
+        val cardView = onView(
             allOf(
-                withContentDescription("Bandas"),
+                withId(R.id.artist_card),
                 childAtPosition(
                     childAtPosition(
-                        withId(R.id.tabLayoutArtist),
+                        withId(R.id.recycler_musicians),
                         0
                     ),
-                    1
-                ),
+                    0
+                )
+            )
+        )
+
+        sleep(5000)
+        cardView.perform(click())
+
+        val imageView = onView(
+            allOf(
+                withId(R.id.artist_image),
+                withParent(withParent(withId(android.R.id.content))),
                 isDisplayed()
             )
         )
-        tabViewBands.perform(click())
+        sleep(5000)
+        imageView.check(matches(isDisplayed()))
 
-        val linearLayout = onView(
+
+        val tabView = onView(
             allOf(
-                withIndex(
-                    withParent(withParent(IsInstanceOf.instanceOf(android.widget.LinearLayout::class.java))),
+                withContentDescription("Álbumes"),
+                childAtPosition(
+                    childAtPosition(
+                        withId(R.id.tabLayoutArtistDetail),
+                        0
+                    ),
                     0
                 ),
                 isDisplayed()
             )
         )
         sleep(5000)
-        linearLayout.check(matches(isDisplayed()))
+        tabView.perform(click())
 
         val appCompatImageView = onView(
+            allOf(
+                withId(R.id.back_button), withContentDescription("Devolverse"),
+                childAtPosition(
+                    childAtPosition(
+                        withId(android.R.id.content),
+                        0
+                    ),
+                    0
+                ),
+                isDisplayed()
+            )
+        )
+        sleep(5000)
+        appCompatImageView.perform(click())
+
+        val appCompatImageView2 = onView(
             allOf(
                 withId(R.id.exitButton), withContentDescription("Salir al menú principal"),
                 childAtPosition(
@@ -114,7 +150,9 @@ class BandListTest {
                 isDisplayed()
             )
         )
-        appCompatImageView.perform(click())
+        sleep(5000)
+        appCompatImageView2.perform(click())
+
     }
 
     private fun childAtPosition(

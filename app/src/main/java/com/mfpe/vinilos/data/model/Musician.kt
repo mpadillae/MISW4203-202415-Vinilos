@@ -9,6 +9,7 @@ data class Musician (
     val image: String,
     val description: String,
     val birthDate: Date,
-    val band : Band
+    val band : Band,
+    var albums: List<Album>
 
 ): Serializable

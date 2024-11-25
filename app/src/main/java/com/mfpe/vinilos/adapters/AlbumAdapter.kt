@@ -29,9 +29,9 @@ class AlbumAdapter(private var albums: List<Album>) :
     override fun onBindViewHolder(holder: AlbumAdapter.ViewHolder, position: Int) {
         with(holder) {
             with(filteredAlbumList[position]) {
-                binding.albumName.text = this.name
+                binding.albumName.text = this.name ?: "Unknown Album"
                 binding.albumAuthor.text =
-                    if (this.performers.isNotEmpty()) this.performers[0].name else ""
+                    if (!this.performers.isNullOrEmpty()) this.performers[0].name else "Unknown Author"
                 Glide.with(binding.albumImage.context)
                     .load(this.cover)
                     .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
@@ -75,9 +75,12 @@ class AlbumAdapter(private var albums: List<Album>) :
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateAlbums(newAlbums: List<Album>) {
-        albums = newAlbums
+        albums = newAlbums.map { album ->
+            album.copy(
+                performers = album.performers ?: emptyList()
+            )
+        }
         this.filteredAlbumList = albums
         notifyDataSetChanged()
     }
-
 }

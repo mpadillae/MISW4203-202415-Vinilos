@@ -24,17 +24,19 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import java.lang.Thread.sleep
+import androidx.test.espresso.action.ViewActions.typeText
+import androidx.test.espresso.action.ViewActions.closeSoftKeyboard
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class BandListTest {
+class AddTrackTest {
 
     @Rule
     @JvmField
     var mActivityScenarioRule = ActivityScenarioRule(UserSelectActivity::class.java)
 
     @Test
-    fun bandDetailTest() {
+    fun albumDetailTest() {
         val button = onView(
             allOf(
                 withId(R.id.button_collectors), withText("COLECCIONISTA"),
@@ -52,53 +54,77 @@ class BandListTest {
             )
         )
         button.perform(click())
-        sleep(5000)
 
-        val bottomNavigationItemView = onView(
+        val cardView = onView(
             allOf(
-                withId(R.id.navigation_artists), withContentDescription("Artistas"),
+                withId(R.id.album_card),
                 childAtPosition(
                     childAtPosition(
-                        withId(R.id.nav_view),
+                        withId(R.id.recycler_albums),
                         0
                     ),
-                    1
-                ),
-                isDisplayed()
-            )
-        )
-        bottomNavigationItemView.perform(click())
-
-        sleep(5000)
-
-        val tabViewBands = onView(
-            allOf(
-                withContentDescription("Bandas"),
-                childAtPosition(
-                    childAtPosition(
-                        withId(R.id.tabLayoutArtist),
-                        0
-                    ),
-                    1
-                ),
-                isDisplayed()
-            )
-        )
-        tabViewBands.perform(click())
-
-        val linearLayout = onView(
-            allOf(
-                withIndex(
-                    withParent(withParent(IsInstanceOf.instanceOf(android.widget.LinearLayout::class.java))),
                     0
                 ),
                 isDisplayed()
             )
         )
         sleep(5000)
-        linearLayout.check(matches(isDisplayed()))
+        cardView.perform(click())
 
-        val appCompatImageView = onView(
+
+        val imageView2 = onView(
+            allOf(
+                withId(R.id.artist_image_view),
+                withParent(
+                    allOf(
+                        withId(R.id.artist_layout),
+                        withParent(IsInstanceOf.instanceOf(android.view.ViewGroup::class.java))
+                    )
+                ),
+                isDisplayed()
+            )
+        )
+        imageView2.check(matches(isDisplayed()))
+
+        val tabView = onView(
+            allOf(
+                withContentDescription("Canciones"),
+                childAtPosition(
+                    childAtPosition(
+                        withId(R.id.tabLayout),
+                        0
+                    ),
+                    1
+                ),
+                isDisplayed()
+            )
+        )
+        tabView.perform(click())
+
+
+        val addTrackButton = onView(
+            allOf(
+                withId(R.id.add_track_button), isDisplayed()
+            )
+        )
+
+        addTrackButton.perform(click())
+
+        val trackName = "Track de Prueba"
+        onView(withId(R.id.et_name)).perform(typeText(trackName), closeSoftKeyboard())
+
+        val trackDuration = "03:30"
+        onView(withId(R.id.et_duration)).perform(typeText(trackDuration), closeSoftKeyboard())
+
+        val saveTrackButton = onView(
+            allOf(
+                withId(R.id.btn_add_track), isDisplayed()
+            )
+        )
+
+        saveTrackButton.perform(click())
+
+        val appCompatImageView2 = onView(
             allOf(
                 withId(R.id.exitButton), withContentDescription("Salir al menú principal"),
                 childAtPosition(
@@ -114,7 +140,9 @@ class BandListTest {
                 isDisplayed()
             )
         )
-        appCompatImageView.perform(click())
+        sleep(5000)
+        appCompatImageView2.perform(click())
+
     }
 
     private fun childAtPosition(
@@ -131,22 +159,6 @@ class BandListTest {
                 val parent = view.parent
                 return parent is ViewGroup && parentMatcher.matches(parent)
                         && view == parent.getChildAt(position)
-            }
-        }
-    }
-
-    private fun withIndex(
-        parentMatcher: Matcher<View>, index: Int
-    ): Matcher<View> {
-        var currentIndex = 0
-        return object : TypeSafeMatcher<View>() {
-            override fun describeTo(description: Description) {
-                description.appendText("with index $index ")
-                parentMatcher.describeTo(description)
-            }
-
-            public override fun matchesSafely(view: View): Boolean {
-                return parentMatcher.matches(view) && currentIndex++ == index
             }
         }
     }
