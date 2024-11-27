@@ -52,5 +52,4 @@ class AlbumDetailActivity : AppCompatActivity() {
         binding.backButton.setOnClickListener { finish() }
 
     }
-
 }

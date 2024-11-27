@@ -25,11 +25,13 @@
         </activity>
         <activity
             android:name=".ui.albums.AlbumDetailActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".ui.shared.MainActivity"
-            android:exported="false"/>
-
+            android:exported="false" />
+        <activity
+            android:name=".ui.collectors.CollectorDetailActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
