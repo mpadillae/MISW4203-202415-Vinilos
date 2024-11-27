@@ -32,6 +32,9 @@ class ArtistListViewModel : ViewModel() {
     private val _selectedMusician = MutableLiveData<Musician>()
     val selectedMusician: LiveData<Musician> get() = _selectedMusician
 
+    private val _selectedBand = MutableLiveData<Band>()
+    val selectedBand: LiveData<Band> get() = _selectedBand
+
     fun fetchBands() {
         viewModelScope.launch {
             bandRepository.getBands().enqueue(object : Callback<List<Band>> {
@@ -82,6 +85,24 @@ class ArtistListViewModel : ViewModel() {
                 }
 
                 override fun onFailure(call: Call<Musician>, t: Throwable) {
+                    _networkError.value = true
+                    Log.d("Error", t.toString())
+                }
+            })
+        }
+    }
+
+    fun fetchBandById(id: Int) {
+        viewModelScope.launch {
+            bandRepository.getBandById(id).enqueue(object : Callback<Band> {
+                override fun onResponse(call: Call<Band>, res: Response<Band>) {
+                    if (res.isSuccessful) {
+                        _selectedBand.value = res.body()
+                        _networkError.value = false
+                    }
+                }
+
+                override fun onFailure(call: Call<Band>, t: Throwable) {
                     _networkError.value = true
                     Log.d("Error", t.toString())
                 }

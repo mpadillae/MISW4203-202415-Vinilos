@@ -1,6 +1,7 @@
 package com.mfpe.vinilos.adapters
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -10,6 +11,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.mfpe.vinilos.R
 import com.mfpe.vinilos.data.model.CollectorAlbum
 import com.mfpe.vinilos.databinding.CollectorAlbumItemBinding
+import com.mfpe.vinilos.ui.albums.AlbumDetailActivity
 
 
 class CollectorAlbumAdapter(private var albums: List<CollectorAlbum>) : RecyclerView.Adapter<CollectorAlbumAdapter.ViewHolder>()  {
@@ -38,6 +40,11 @@ class CollectorAlbumAdapter(private var albums: List<CollectorAlbum>) : Recycler
                     .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
                     .centerCrop()
                     .into(binding.collectorAlbumImage)
+                binding.collectorAlbumCard.setOnClickListener {
+                    val intent = Intent(binding.root.context, AlbumDetailActivity::class.java)
+                    intent.putExtra("album", this.album)
+                    binding.root.context.startActivity(intent)
+                }
             }
         }
     }
