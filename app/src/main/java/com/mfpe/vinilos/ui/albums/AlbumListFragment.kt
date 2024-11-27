@@ -40,9 +40,9 @@ class AlbumListFragment(
         val root: View = binding.root
 
         if (comeFromArtistDetail == true) {
-            binding.searchBar.visibility = View.GONE // Hide SearchView
+            binding.searchBar.visibility = View.GONE
         } else {
-            binding.searchBar.visibility = View.VISIBLE // Show SearchView
+            binding.searchBar.visibility = View.VISIBLE
             setupSearchView()
         }
 
@@ -98,14 +98,12 @@ class AlbumListFragment(
 
 
     private fun setupRecyclerView() {
-        if (PrefsManager.getInstance(requireContext()).getUserType!! == "collector") {
+        if (PrefsManager.getInstance(requireContext()).getUserType!! == "collector" && comeFromArtistDetail == false) {
             binding.addAlbumButton.visibility = View.VISIBLE
             binding.addAlbumButton.setOnClickListener {
                 findNavController().navigate(R.id.action_albumListFragment_to_addAlbumFragment)
             }
         }
-
-
         albumAdapter = AlbumAdapter(emptyList())
         binding.recyclerAlbums.layoutManager = GridLayoutManager(context, 2)
         binding.recyclerAlbums.adapter = albumAdapter
