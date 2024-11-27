@@ -24,6 +24,9 @@ class AlbumListViewModel : ViewModel() {
     private var _networkError = MutableLiveData(false)
     val networkError: LiveData<Boolean> get() = _networkError
 
+    private val _selectedAlbum = MutableLiveData<Album>()
+    val selectedAlbum: LiveData<Album> get() = _selectedAlbum
+
     fun addAlbum(createAlbumRequest: CreateAlbumRequest, onResult: (Boolean) -> Unit) {
         viewModelScope.launch {
             albumRepository.addAlbum(createAlbumRequest).enqueue(object : Callback<Album> {
@@ -74,4 +77,27 @@ class AlbumListViewModel : ViewModel() {
             })
         }
     }
+
+    fun fetchAlbumById(id:Int){
+        viewModelScope.launch {
+            albumRepository.getAlbumById(id).enqueue(object : Callback<Album>{
+
+                override fun onResponse(call: Call<Album>, res: Response<Album>) {
+                    if (res.isSuccessful) {
+                        _selectedAlbum.value = res.body()
+                        _networkError.value = false
+                    }
+                }
+
+                override fun onFailure(call: Call<Album>, t: Throwable) {
+                    _networkError.value = true
+                    Log.d("Error", t.toString())
+                }            })
+
+
+        }
+    }
+
+
+
 }

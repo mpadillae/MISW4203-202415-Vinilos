@@ -7,5 +7,7 @@ data class Band (
     val name: String,
     val image: String,
     val description: String,
-    val musicians : List<Musician>
-    ): Serializable
+    val musicians : List<Musician>,
+    var albums: List<Album>
+
+): Serializable

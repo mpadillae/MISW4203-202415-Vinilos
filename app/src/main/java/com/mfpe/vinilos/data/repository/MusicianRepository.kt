@@ -15,4 +15,8 @@ class MusicianRepository {
         return musicianRepository.getMusician()
     }
 
+    fun getMusicianById(id: Int): Call<Musician> {
+        return musicianRepository.getMusicianById(id)
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.mfpe.vinilos.adapters
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
@@ -10,6 +11,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.mfpe.vinilos.data.model.Musician
 import com.mfpe.vinilos.databinding.ArtistItemBinding
+import com.mfpe.vinilos.ui.artists.MusicianDetailActivity
 
 class MusicianAdapter(private var musicians: List<Musician>): RecyclerView.Adapter<MusicianAdapter.ViewHolder>(),Filterable {
 
@@ -46,6 +48,11 @@ class MusicianAdapter(private var musicians: List<Musician>): RecyclerView.Adapt
                     .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
                     .centerCrop()
                     .into(binding.artistImage)
+                binding.artistCard.setOnClickListener{
+                    val intent = Intent(binding.root.context,MusicianDetailActivity::class.java)
+                    intent.putExtra("musician",this)
+                    binding.root.context.startActivity(intent)
+                }
             }}
     }
 

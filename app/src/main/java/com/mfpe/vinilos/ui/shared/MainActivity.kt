@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         val navView: BottomNavigationView = binding.navView
-
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         navView.setupWithNavController(navController)
 
@@ -36,6 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.exitButton.setOnClickListener {
             PrefsManager.getInstance(this).clear()
+
             Intent(this, UserSelectActivity::class.java).apply {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(this)
@@ -43,5 +43,4 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
 }
