@@ -1,6 +1,7 @@
 package com.mfpe.vinilos.adapters
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
@@ -8,6 +9,7 @@ import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.mfpe.vinilos.data.model.Collector
 import com.mfpe.vinilos.databinding.CollectorItemBinding
+import com.mfpe.vinilos.ui.collectors.CollectorDetailActivity
 
 class CollectorAdapter(private var collectors: List<Collector>) : RecyclerView.Adapter<CollectorAdapter.ViewHolder>(), Filterable {
     private var filteredCollectorList: List<Collector> = collectors
@@ -27,6 +29,11 @@ class CollectorAdapter(private var collectors: List<Collector>) : RecyclerView.A
                 val names = this.name.split(" ")
                 val initials = names[0].first().uppercase() + names[names.lastIndex].first().uppercase()
                 binding.collectorInitials.text = initials
+                binding.collectorCard.setOnClickListener {
+                    val intent = Intent(binding.root.context, CollectorDetailActivity::class.java)
+                    intent.putExtra("collector", this)
+                    binding.root.context.startActivity(intent)
+                }
             }
         }
     }

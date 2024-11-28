@@ -1,7 +1,6 @@
 package com.mfpe.vinilos.data.network
 
 import com.mfpe.vinilos.data.model.Album
-import com.mfpe.vinilos.data.model.Musician
 import com.mfpe.vinilos.data.model.requests.CreateAlbumRequest
 import retrofit2.Call
 import retrofit2.http.GET

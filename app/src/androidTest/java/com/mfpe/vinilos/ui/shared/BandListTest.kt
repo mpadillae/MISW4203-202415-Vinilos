@@ -89,8 +89,7 @@ class BandListTest {
         val linearLayout = onView(
             allOf(
                 withIndex(
-                    withParent(withParent(IsInstanceOf.instanceOf(android.widget.LinearLayout::class.java))),
-                    0
+                    withParent(withParent(IsInstanceOf.instanceOf(android.widget.LinearLayout::class.java)))
                 ),
                 isDisplayed()
             )
@@ -136,17 +135,17 @@ class BandListTest {
     }
 
     private fun withIndex(
-        parentMatcher: Matcher<View>, index: Int
+        parentMatcher: Matcher<View>
     ): Matcher<View> {
         var currentIndex = 0
         return object : TypeSafeMatcher<View>() {
             override fun describeTo(description: Description) {
-                description.appendText("with index $index ")
+                description.appendText("with index 0 ")
                 parentMatcher.describeTo(description)
             }
 
             public override fun matchesSafely(view: View): Boolean {
-                return parentMatcher.matches(view) && currentIndex++ == index
+                return parentMatcher.matches(view) && currentIndex++ == 0
             }
         }
     }

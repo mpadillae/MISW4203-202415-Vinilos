@@ -47,4 +47,14 @@
     <string name="tvNumberFormat">%d</string>
     <string name="selectGenreText">Seleccione un género</string>
     <string name="selectDisqueraText">Seleccione una disquera</string>
+    <string name="tabFavoritePerformers">Artistas Favoritos</string>
+    <string name="tabAlbums">Álbumes</string>
+    <string name="no_favorite_performers_message">No hay artistas favoritos para mostrar.</string>
+    <string name="ivFavoritePerformerItem">Imágen de artista favorito</string>
+    <string name="ivCheckIcon">Imagen de un check</string>
+    <string name="agregar_cancion">Agregar Canción</string>
+    <string name="track_name">Nombre del track</string>
+    <string name="track_duration">Duración (mm:ss)</string>
+    <string name="track_invalid_format_msg">Formato inválido. Debe ser mm:ss</string>
+    <string name="add_track">Agregar Track</string>
 </resources>

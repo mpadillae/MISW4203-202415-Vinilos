@@ -31,7 +31,7 @@ class MusicianDetailActivity: AppCompatActivity() {
             this.musician = musician
         }
 
-        if (this.musician.albums == null) {
+        if (this.musician.albums == null || this.musician.albums.isEmpty()) {
             fetchMusicianDetails()
         } else {
             setupUI()

@@ -15,7 +15,6 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import com.mfpe.vinilos.R
-import com.mfpe.vinilos.data.model.Musician
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
@@ -35,7 +34,7 @@ class MusicianListTest {
     var mActivityScenarioRule = ActivityScenarioRule(UserSelectActivity::class.java)
 
     @Test
-    fun MusicianDetailTest() {
+    fun musicianDetailTest() {
         val button = onView(
             allOf(
                 withId(R.id.button_collectors), withText("COLECCIONISTA"),
@@ -76,8 +75,7 @@ class MusicianListTest {
         val linearLayout = onView(
             allOf(
                 withIndex(
-                    withParent(withParent(IsInstanceOf.instanceOf(android.widget.LinearLayout::class.java))),
-                    0
+                    withParent(withParent(IsInstanceOf.instanceOf(android.widget.LinearLayout::class.java)))
                 ),
                 isDisplayed()
             )
@@ -123,17 +121,17 @@ class MusicianListTest {
     }
 
     private fun withIndex(
-        parentMatcher: Matcher<View>, index: Int
+        parentMatcher: Matcher<View>
     ): Matcher<View> {
         var currentIndex = 0
         return object : TypeSafeMatcher<View>() {
             override fun describeTo(description: Description) {
-                description.appendText("with index $index ")
+                description.appendText("with index 0 ")
                 parentMatcher.describeTo(description)
             }
 
             public override fun matchesSafely(view: View): Boolean {
-                return parentMatcher.matches(view) && currentIndex++ == index
+                return parentMatcher.matches(view) && currentIndex++ == 0
             }
         }
     }

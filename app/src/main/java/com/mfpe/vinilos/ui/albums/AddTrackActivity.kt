@@ -5,7 +5,6 @@ import android.util.Log
 import android.widget.ImageButton
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.mfpe.vinilos.R
@@ -25,11 +24,10 @@ class AddTrackActivity : AppCompatActivity() {
     private lateinit var saveButton: Button
     private lateinit var etName: EditText
     private lateinit var etDuration: EditText
-    private lateinit var errorDuration: TextView
 
     private var albumId: Int = -1
 
-    private val TAG = "AddTrackActivity"
+    private val tag = "AddTrackActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,14 +47,13 @@ class AddTrackActivity : AppCompatActivity() {
         etName = findViewById(R.id.et_name)
 
         etDuration = findViewById(R.id.et_duration)
-        errorDuration = findViewById(R.id.error_duration)
 
         backButton.setOnClickListener {
-            Log.d(TAG, "Botón de retroceso presionado.")
+            Log.d(tag, "Botón de retroceso presionado.")
             finish()
         }
         saveButton.setOnClickListener {
-            Log.d(TAG, "Botón de guardar presionado.")
+            Log.d(tag, "Botón de guardar presionado.")
             validateAndSaveTrack()
         }
     }
@@ -82,7 +79,7 @@ class AddTrackActivity : AppCompatActivity() {
 
     private fun saveTrack(track: Track) {
         if (albumId == -1) {
-            Log.e(TAG, "No se puede guardar el track: Album ID no válido")
+            Log.e(tag, "No se puede guardar el track: Album ID no válido")
             return
         }
 
@@ -96,7 +93,7 @@ class AddTrackActivity : AppCompatActivity() {
             override fun onResponse(call: Call<Track>, response: Response<Track>) {
 
                 if (response.isSuccessful) {
-                    Log.d(TAG, "Track creado exitosamente: ${response.body()}")
+                    Log.d(tag, "Track creado exitosamente: ${response.body()}")
                     Toast.makeText(this@AddTrackActivity, "Track creado exitosamente.", Toast.LENGTH_SHORT).show()
 
                     val intent = Intent(this@AddTrackActivity, MainActivity::class.java)
@@ -105,13 +102,13 @@ class AddTrackActivity : AppCompatActivity() {
                     finish()
                 } else {
                     val errorBody = response.errorBody()?.string() ?: "Sin detalles"
-                    Log.e(TAG, "Error al crear el track. Código: ${response.code()}, Mensaje: ${response.message()}, Detalles: $errorBody")
+                    Log.e(tag, "Error al crear el track. Código: ${response.code()}, Mensaje: ${response.message()}, Detalles: $errorBody")
                     Toast.makeText(this@AddTrackActivity, "Error al crear el track: $errorBody", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<Track>, t: Throwable) {
-                Log.e(TAG, "Error de red al crear el track: ${t.message}")
+                Log.e(tag, "Error de red al crear el track: ${t.message}")
                 Toast.makeText(this@AddTrackActivity, "Error de red: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
@@ -119,7 +116,7 @@ class AddTrackActivity : AppCompatActivity() {
     private fun isValidDuration(duration: String): Boolean {
         val regex = "^([0-5]?[0-9]):([0-5]?[0-9])$".toRegex()
         val isValid = regex.matches(duration)
-        Log.d(TAG, "Validación de duración: '$duration', válido: $isValid")
+        Log.d(tag, "Validación de duración: '$duration', válido: $isValid")
         return isValid
     }
 }

@@ -4,8 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
@@ -13,7 +11,7 @@ import com.mfpe.vinilos.data.model.Band
 import com.mfpe.vinilos.databinding.ArtistItemBinding
 import com.mfpe.vinilos.ui.artists.BandDetailActivity
 
-class BandAdapter(private var bands: List<Band>) : RecyclerView.Adapter<BandAdapter.ViewHolder>(),Filterable {
+class BandAdapter(private var bands: List<Band>) : RecyclerView.Adapter<BandAdapter.ViewHolder>() {
 
     inner class ViewHolder(val binding: ArtistItemBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -23,10 +21,6 @@ class BandAdapter(private var bands: List<Band>) : RecyclerView.Adapter<BandAdap
     }
 
     override fun getItemCount(): Int = bands.size
-
-    override fun getFilter(): Filter {
-        TODO("Not yet implemented")
-    }
 
     override fun onBindViewHolder(holder: BandAdapter.ViewHolder, position: Int) {
         with(holder) {
@@ -51,7 +45,4 @@ class BandAdapter(private var bands: List<Band>) : RecyclerView.Adapter<BandAdap
         bands = newBands
         notifyDataSetChanged()
     }
-
-
-
 }

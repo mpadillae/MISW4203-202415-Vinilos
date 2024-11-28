@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.mfpe.vinilos.data.model.Album
 import com.mfpe.vinilos.data.model.requests.CreateAlbumRequest
 import com.mfpe.vinilos.data.repository.AlbumRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
@@ -28,7 +29,7 @@ class AlbumListViewModel : ViewModel() {
     val selectedAlbum: LiveData<Album> get() = _selectedAlbum
 
     fun addAlbum(createAlbumRequest: CreateAlbumRequest, onResult: (Boolean) -> Unit) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             albumRepository.addAlbum(createAlbumRequest).enqueue(object : Callback<Album> {
                 override fun onResponse(call: Call<Album>, response: Response<Album>) {
                     if (response.isSuccessful) {
@@ -53,7 +54,7 @@ class AlbumListViewModel : ViewModel() {
     }
 
     fun fetchAlbums() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             albumRepository.getAlbums().enqueue(object : Callback<List<Album>> {
                 override fun onResponse(call: Call<List<Album>>, res: Response<List<Album>>) {
                     if (res.isSuccessful) {
@@ -79,7 +80,7 @@ class AlbumListViewModel : ViewModel() {
     }
 
     fun fetchAlbumById(id:Int){
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             albumRepository.getAlbumById(id).enqueue(object : Callback<Album>{
 
                 override fun onResponse(call: Call<Album>, res: Response<Album>) {

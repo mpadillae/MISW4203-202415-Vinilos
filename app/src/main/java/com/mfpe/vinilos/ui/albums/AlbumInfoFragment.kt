@@ -27,7 +27,7 @@ class AlbumInfoFragment(private val album: Album) : Fragment() {
         binding.albumInfoReleasedate.text =
             SimpleDateFormat("dd/MM/yyyy", Locale.US).format(album.releaseDate)
         binding.albumInfoRecord.text = album.recordLabel
-        val performers = if (album.performers.isNotEmpty()) album.performers[0].name else ""
+        val performers = if (album.performers!!.isNotEmpty()) album.performers[0].name else ""
         binding.albumInfoArtist.text =
             resources.getString(R.string.tvAlbumInfoArtist).format(performers)
 

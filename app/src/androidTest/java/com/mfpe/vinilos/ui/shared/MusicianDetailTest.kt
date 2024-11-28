@@ -16,12 +16,10 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import com.mfpe.vinilos.R
-import com.mfpe.vinilos.data.model.Musician
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.TypeSafeMatcher
-import org.hamcrest.core.IsInstanceOf
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -37,7 +35,7 @@ class MusicianDetailTest {
 
     @SuppressLint("NotConstructor")
     @Test
-    fun MusicianDetailTest() {
+    fun musicianDetailTest() {
         val button = onView(
             allOf(
                 withId(R.id.button_collectors), withText("COLECCIONISTA"),
@@ -173,19 +171,4 @@ class MusicianDetailTest {
         }
     }
 
-    private fun withIndex(
-        parentMatcher: Matcher<View>, index: Int
-    ): Matcher<View> {
-        var currentIndex = 0
-        return object : TypeSafeMatcher<View>() {
-            override fun describeTo(description: Description) {
-                description.appendText("with index $index ")
-                parentMatcher.describeTo(description)
-            }
-
-            public override fun matchesSafely(view: View): Boolean {
-                return parentMatcher.matches(view) && currentIndex++ == index
-            }
-        }
-    }
 }

@@ -14,4 +14,8 @@ class BandRepository {
     fun getBands(): Call<List<Band>>{
         return bandService.getBands()
     }
+
+    fun getBandById(id: Int): Call<Band> {
+        return bandService.getBandById(id)
+    }
 }

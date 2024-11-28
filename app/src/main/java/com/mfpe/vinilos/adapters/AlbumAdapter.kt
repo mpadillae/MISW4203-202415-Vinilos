@@ -56,7 +56,7 @@ class AlbumAdapter(private var albums: List<Album>) :
                     albums
                 } else {
                     albums.filter {
-                        it.name.lowercase().contains(query)
+                        it.name!!.lowercase().contains(query)
                     }
                 }
                 val filterResults = FilterResults()
